@@ -49,19 +49,17 @@ namespace NovelReader
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (speech.State == SynthesizerState.Speaking || speech.State == SynthesizerState.Paused)
-                MessageBox.Show("Stop the speech");
-            else
-                if (!string.IsNullOrEmpty(nextchapterlink))
+            speech.SpeakAsyncCancelAll();
+
+            if (!string.IsNullOrEmpty(nextchapterlink))
                 LoadChapterData($"{nextchapterlink}");
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (speech.State == SynthesizerState.Speaking || speech.State == SynthesizerState.Paused)
-                MessageBox.Show("Stop the speech");
-            else
-               if (!string.IsNullOrEmpty(previouschapterlink))
+            speech.SpeakAsyncCancelAll();
+
+            if (!string.IsNullOrEmpty(previouschapterlink))
                 LoadChapterData($"{previouschapterlink}");
         }
 
@@ -92,10 +90,11 @@ namespace NovelReader
 
         private void SpeechCompleted(object sender, SpeakCompletedEventArgs e)
         {
+            System.Threading.Thread.Sleep(1000);
             btnRead.Enabled = true;
             btnStop.Enabled = false;
             btnContinue.Enabled = false;
-            txtChapterText.SelectedText = null;
+            txtChapterText.SelectedText = "";
             txtChapterText.DeselectAll();
         }
 
