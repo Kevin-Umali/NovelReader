@@ -57,6 +57,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtChapterText = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnReload = new Guna.UI2.WinForms.Guna2Button();
+            this.lbllink = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -172,6 +174,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lbllink);
+            this.panel1.Controls.Add(this.btnReload);
             this.panel1.Controls.Add(this.guna2Separator1);
             this.panel1.Controls.Add(this.btnPrev);
             this.panel1.Controls.Add(this.btnNext);
@@ -507,8 +511,49 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 500;
+            this.timer1.Interval = 800;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnReload
+            // 
+            this.btnReload.AutoRoundedCorners = true;
+            this.btnReload.BackColor = System.Drawing.Color.Transparent;
+            this.btnReload.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnReload.BorderRadius = 21;
+            this.btnReload.BorderThickness = 2;
+            this.btnReload.CheckedState.Parent = this.btnReload;
+            this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReload.CustomImages.Parent = this.btnReload;
+            this.btnReload.FillColor = System.Drawing.Color.White;
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnReload.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.btnReload.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnReload.HoverState.Parent = this.btnReload;
+            this.btnReload.Location = new System.Drawing.Point(12, 16);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnReload.ShadowDecoration.BorderRadius = 21;
+            this.btnReload.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnReload.ShadowDecoration.Depth = 20;
+            this.btnReload.ShadowDecoration.Enabled = true;
+            this.btnReload.ShadowDecoration.Parent = this.btnReload;
+            this.btnReload.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
+            this.btnReload.Size = new System.Drawing.Size(116, 45);
+            this.btnReload.TabIndex = 13;
+            this.btnReload.Text = "Reload";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // lbllink
+            // 
+            this.lbllink.AutoEllipsis = true;
+            this.lbllink.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbllink.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbllink.Location = new System.Drawing.Point(929, 15);
+            this.lbllink.Name = "lbllink";
+            this.lbllink.Size = new System.Drawing.Size(341, 48);
+            this.lbllink.TabIndex = 17;
+            this.lbllink.Text = "Loading...";
             // 
             // NovelChapterReaderForm
             // 
@@ -572,5 +617,7 @@
         private Guna.UI2.WinForms.Guna2Button btnRead;
         private System.Windows.Forms.RichTextBox txtChapterText;
         private System.Windows.Forms.Timer timer1;
+        private Guna.UI2.WinForms.Guna2Button btnReload;
+        private System.Windows.Forms.Label lbllink;
     }
 }

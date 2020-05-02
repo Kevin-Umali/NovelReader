@@ -29,15 +29,17 @@ namespace NovelReader
 
         private void NovelChapterReaderForm_Load(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
+            Cursor.Current = Cursors.WaitCursor;
             timer1.Start();
         }
 
         private void LoadChapterData(string url)
         {
+            _link = url;
+            lbllink.Text = _link;
             var extract = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetChapterText($"{url}");
 
-            txtChapterText.Text = extract.ChapterText;
+            txtChapterText.Text = extract.ChapterText.Trim();
 
             previouschapterlink = extract.PreviousChapterLink;
             nextchapterlink = extract.NextChapterLink;
@@ -133,7 +135,14 @@ namespace NovelReader
                 guna2ComboBox1.Items.Add(f);
 
             LoadChapterData(_link);
-            Cursor = Cursors.Default;
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            LoadChapterData(_link);
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnRead_Click(object sender, EventArgs e)

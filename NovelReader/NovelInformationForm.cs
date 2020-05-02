@@ -20,7 +20,7 @@ namespace NovelReader
 
         private void NovelInformationForm_Load(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
+            Cursor.Current = Cursors.WaitCursor;
             timer1.Start();
         }
         private async void btnLoad_Click(object sender, EventArgs e)
@@ -68,7 +68,6 @@ namespace NovelReader
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
             timer1.Stop();
             lbltitle.Text = _title;
             lblrating.Text = $"{_rating}";
@@ -82,7 +81,9 @@ namespace NovelReader
             pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
 
             lblsypnosis.Text = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSypnosis($"{_link}").Sypnosis.Trim().TrimStart();
+            Cursor.Current = Cursors.Default;
         }
+
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {

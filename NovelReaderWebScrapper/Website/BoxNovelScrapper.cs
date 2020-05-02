@@ -261,12 +261,14 @@ namespace NovelReaderWebScrapper.Website
                 previouschapter = linknode?.SelectSingleNode("//div[@class='nav-previous']/a[@href]")?.GetAttributeValue("href", string.Empty);
                 nextchapter = linknode?.SelectSingleNode("//div[@class='nav-next']/a[@href]")?.GetAttributeValue("href", string.Empty);
 
-                HtmlNode[] nodes = doc.DocumentNode.SelectNodes("//div[@class='entry-content']/div/div/div/div/p").ToArray();
+                HtmlNode[] nodes = doc.DocumentNode.SelectNodes("//div[@class='entry-content']").ToArray();
                 foreach (HtmlNode item in nodes)
                 {
                     text += HttpUtility.HtmlDecode(
                         item?.InnerText
                         ) + Environment.NewLine + Environment.NewLine;
+
+                    Console.WriteLine(text);
                 }
             }
             catch (Exception ex)

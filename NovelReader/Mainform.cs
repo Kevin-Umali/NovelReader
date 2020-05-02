@@ -164,7 +164,7 @@ namespace NovelReader
 
         private void AddEventOnNovelCard()
         {
-            ForceCloseMessageBox.ForceMessageBoxClose("Wait a moment.", 2);
+            ForceCloseMessageBox.ForceMessageBoxClose("Please wait a moment...", 2);
             foreach (var c in this.flowLayoutPanel1.Controls.OfType<NovelReaderUserControlLibrary.NovelCard>())
             {
                 //new ElapsedEventHandler((sender, e) => PlayMusicEvent(sender, e, musicNote))
@@ -219,6 +219,8 @@ namespace NovelReader
         {
             if (!string.IsNullOrEmpty(txtSearch.Text))
                 LoadData($"https://boxnovel.com/?s={txtSearch.Text}&post_type=wp-manga&m_orderby={orderby}", true);
+            else
+                LoadData($"{source}", false);
         }
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
