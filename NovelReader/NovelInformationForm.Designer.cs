@@ -295,7 +295,7 @@
             this.chapterdatagridview.ThemeStyle.RowsStyle.Height = 22;
             this.chapterdatagridview.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
             this.chapterdatagridview.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.chapterdatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
+            this.chapterdatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.chapterdatagridview_CellContentClick);
             // 
             // btnLoad
             // 
@@ -458,7 +458,6 @@
             // 
             // Read
             // 
-            this.Read.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             dataGridViewCellStyle5.NullValue = "Read";
@@ -468,7 +467,6 @@
             this.Read.HeaderText = "";
             this.Read.MinimumWidth = 150;
             this.Read.Name = "Read";
-            this.Read.Width = 150;
             // 
             // NovelInformationForm
             // 

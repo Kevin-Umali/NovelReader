@@ -62,11 +62,11 @@ namespace NovelReader
                 await TaskAsync(item.ChapterName, item.DateRelease, item.ChapterLink).ConfigureAwait(false);
         }
 
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void chapterdatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (chapterdatagridview.Rows.Count >= 1)
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 4)
                 {
                     this.Hide();
                     NovelChapterReaderForm f1 = new NovelChapterReaderForm(chapterdatagridview.CurrentRow.Cells["Link"].Value.ToString());
