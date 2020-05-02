@@ -29,10 +29,8 @@ namespace NovelReader
 
         private void NovelChapterReaderForm_Load(object sender, EventArgs e)
         {
-            foreach (var f in fontNames)
-                guna2ComboBox1.Items.Add(f);
-
-            LoadChapterData(_link);
+            Cursor = Cursors.WaitCursor;
+            timer1.Start();
         }
 
         private void LoadChapterData(string url)
@@ -49,7 +47,7 @@ namespace NovelReader
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (speech.State == SynthesizerState.Speaking || speech.State == SynthesizerState.Paused || speech.State == SynthesizerState.Ready)
+            if (speech.State == SynthesizerState.Speaking || speech.State == SynthesizerState.Paused)
                 MessageBox.Show("Stop the speech");
             else
                 if (!string.IsNullOrEmpty(nextchapterlink))
@@ -58,7 +56,7 @@ namespace NovelReader
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (speech.State == SynthesizerState.Speaking || speech.State == SynthesizerState.Paused || speech.State == SynthesizerState.Ready)
+            if (speech.State == SynthesizerState.Speaking || speech.State == SynthesizerState.Paused)
                 MessageBox.Show("Stop the speech");
             else
                if (!string.IsNullOrEmpty(previouschapterlink))
@@ -126,6 +124,16 @@ namespace NovelReader
                 speech.Resume();
                 btnContinue.Text = "Pause";
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            foreach (var f in fontNames)
+                guna2ComboBox1.Items.Add(f);
+
+            LoadChapterData(_link);
+            Cursor = Cursors.Default;
         }
 
         private void btnRead_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovelChapterReaderForm));
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +43,9 @@
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnStop = new Guna.UI2.WinForms.Guna2Button();
+            this.btnContinue = new Guna.UI2.WinForms.Guna2Button();
+            this.btnRead = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,10 +55,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnRead = new Guna.UI2.WinForms.Guna2Button();
-            this.btnContinue = new Guna.UI2.WinForms.Guna2Button();
-            this.btnStop = new Guna.UI2.WinForms.Guna2Button();
             this.txtChapterText = new System.Windows.Forms.RichTextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -276,6 +278,101 @@
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(1280, 75);
             this.guna2ShadowPanel2.TabIndex = 32;
             // 
+            // btnStop
+            // 
+            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStop.AutoRoundedCorners = true;
+            this.btnStop.BackColor = System.Drawing.Color.Transparent;
+            this.btnStop.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
+            this.btnStop.BorderRadius = 21;
+            this.btnStop.BorderThickness = 2;
+            this.btnStop.CheckedState.Parent = this.btnStop;
+            this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStop.CustomImages.Parent = this.btnStop;
+            this.btnStop.Enabled = false;
+            this.btnStop.FillColor = System.Drawing.Color.White;
+            this.btnStop.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.btnStop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
+            this.btnStop.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.btnStop.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnStop.HoverState.Parent = this.btnStop;
+            this.btnStop.Location = new System.Drawing.Point(1121, 4);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
+            this.btnStop.ShadowDecoration.BorderRadius = 21;
+            this.btnStop.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
+            this.btnStop.ShadowDecoration.Depth = 20;
+            this.btnStop.ShadowDecoration.Enabled = true;
+            this.btnStop.ShadowDecoration.Parent = this.btnStop;
+            this.btnStop.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
+            this.btnStop.Size = new System.Drawing.Size(147, 45);
+            this.btnStop.TabIndex = 11;
+            this.btnStop.Text = "Stop";
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnContinue
+            // 
+            this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnContinue.AutoRoundedCorners = true;
+            this.btnContinue.BackColor = System.Drawing.Color.Transparent;
+            this.btnContinue.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
+            this.btnContinue.BorderRadius = 21;
+            this.btnContinue.BorderThickness = 2;
+            this.btnContinue.CheckedState.Parent = this.btnContinue;
+            this.btnContinue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContinue.CustomImages.Parent = this.btnContinue;
+            this.btnContinue.Enabled = false;
+            this.btnContinue.FillColor = System.Drawing.Color.White;
+            this.btnContinue.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.btnContinue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
+            this.btnContinue.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.btnContinue.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnContinue.HoverState.Parent = this.btnContinue;
+            this.btnContinue.Location = new System.Drawing.Point(968, 4);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
+            this.btnContinue.ShadowDecoration.BorderRadius = 21;
+            this.btnContinue.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
+            this.btnContinue.ShadowDecoration.Depth = 20;
+            this.btnContinue.ShadowDecoration.Enabled = true;
+            this.btnContinue.ShadowDecoration.Parent = this.btnContinue;
+            this.btnContinue.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
+            this.btnContinue.Size = new System.Drawing.Size(147, 45);
+            this.btnContinue.TabIndex = 10;
+            this.btnContinue.Text = "Pause";
+            this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
+            // 
+            // btnRead
+            // 
+            this.btnRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRead.AutoRoundedCorners = true;
+            this.btnRead.BackColor = System.Drawing.Color.Transparent;
+            this.btnRead.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnRead.BorderRadius = 21;
+            this.btnRead.BorderThickness = 2;
+            this.btnRead.CheckedState.Parent = this.btnRead;
+            this.btnRead.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRead.CustomImages.Parent = this.btnRead;
+            this.btnRead.FillColor = System.Drawing.Color.White;
+            this.btnRead.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.btnRead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnRead.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.btnRead.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnRead.HoverState.Parent = this.btnRead;
+            this.btnRead.Location = new System.Drawing.Point(815, 4);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnRead.ShadowDecoration.BorderRadius = 21;
+            this.btnRead.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnRead.ShadowDecoration.Depth = 20;
+            this.btnRead.ShadowDecoration.Enabled = true;
+            this.btnRead.ShadowDecoration.Parent = this.btnRead;
+            this.btnRead.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
+            this.btnRead.Size = new System.Drawing.Size(147, 45);
+            this.btnRead.TabIndex = 9;
+            this.btnRead.Text = "Read Chapter";
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
+            // 
             // guna2ComboBox1
             // 
             this.guna2ComboBox1.AutoRoundedCorners = true;
@@ -393,101 +490,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "(12)";
             // 
-            // btnRead
-            // 
-            this.btnRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRead.AutoRoundedCorners = true;
-            this.btnRead.BackColor = System.Drawing.Color.Transparent;
-            this.btnRead.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnRead.BorderRadius = 21;
-            this.btnRead.BorderThickness = 2;
-            this.btnRead.CheckedState.Parent = this.btnRead;
-            this.btnRead.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRead.CustomImages.Parent = this.btnRead;
-            this.btnRead.FillColor = System.Drawing.Color.White;
-            this.btnRead.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnRead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnRead.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
-            this.btnRead.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnRead.HoverState.Parent = this.btnRead;
-            this.btnRead.Location = new System.Drawing.Point(815, 4);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnRead.ShadowDecoration.BorderRadius = 21;
-            this.btnRead.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnRead.ShadowDecoration.Depth = 20;
-            this.btnRead.ShadowDecoration.Enabled = true;
-            this.btnRead.ShadowDecoration.Parent = this.btnRead;
-            this.btnRead.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
-            this.btnRead.Size = new System.Drawing.Size(147, 45);
-            this.btnRead.TabIndex = 9;
-            this.btnRead.Text = "Read Chapter";
-            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
-            // 
-            // btnContinue
-            // 
-            this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContinue.AutoRoundedCorners = true;
-            this.btnContinue.BackColor = System.Drawing.Color.Transparent;
-            this.btnContinue.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
-            this.btnContinue.BorderRadius = 21;
-            this.btnContinue.BorderThickness = 2;
-            this.btnContinue.CheckedState.Parent = this.btnContinue;
-            this.btnContinue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContinue.CustomImages.Parent = this.btnContinue;
-            this.btnContinue.Enabled = false;
-            this.btnContinue.FillColor = System.Drawing.Color.White;
-            this.btnContinue.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnContinue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
-            this.btnContinue.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
-            this.btnContinue.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnContinue.HoverState.Parent = this.btnContinue;
-            this.btnContinue.Location = new System.Drawing.Point(968, 4);
-            this.btnContinue.Name = "btnContinue";
-            this.btnContinue.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
-            this.btnContinue.ShadowDecoration.BorderRadius = 21;
-            this.btnContinue.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
-            this.btnContinue.ShadowDecoration.Depth = 20;
-            this.btnContinue.ShadowDecoration.Enabled = true;
-            this.btnContinue.ShadowDecoration.Parent = this.btnContinue;
-            this.btnContinue.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
-            this.btnContinue.Size = new System.Drawing.Size(147, 45);
-            this.btnContinue.TabIndex = 10;
-            this.btnContinue.Text = "Pause";
-            this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStop.AutoRoundedCorners = true;
-            this.btnStop.BackColor = System.Drawing.Color.Transparent;
-            this.btnStop.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
-            this.btnStop.BorderRadius = 21;
-            this.btnStop.BorderThickness = 2;
-            this.btnStop.CheckedState.Parent = this.btnStop;
-            this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStop.CustomImages.Parent = this.btnStop;
-            this.btnStop.Enabled = false;
-            this.btnStop.FillColor = System.Drawing.Color.White;
-            this.btnStop.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnStop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
-            this.btnStop.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
-            this.btnStop.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnStop.HoverState.Parent = this.btnStop;
-            this.btnStop.Location = new System.Drawing.Point(1121, 4);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
-            this.btnStop.ShadowDecoration.BorderRadius = 21;
-            this.btnStop.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
-            this.btnStop.ShadowDecoration.Depth = 20;
-            this.btnStop.ShadowDecoration.Enabled = true;
-            this.btnStop.ShadowDecoration.Parent = this.btnStop;
-            this.btnStop.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
-            this.btnStop.Size = new System.Drawing.Size(147, 45);
-            this.btnStop.TabIndex = 11;
-            this.btnStop.Text = "Stop";
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
             // txtChapterText
             // 
             this.txtChapterText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -501,7 +503,12 @@
             this.txtChapterText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.txtChapterText.Size = new System.Drawing.Size(1260, 518);
             this.txtChapterText.TabIndex = 33;
-            this.txtChapterText.Text = "";
+            this.txtChapterText.Text = "Loading...";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // NovelChapterReaderForm
             // 
@@ -564,5 +571,6 @@
         private Guna.UI2.WinForms.Guna2Button btnContinue;
         private Guna.UI2.WinForms.Guna2Button btnRead;
         private System.Windows.Forms.RichTextBox txtChapterText;
+        private System.Windows.Forms.Timer timer1;
     }
 }

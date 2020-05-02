@@ -20,18 +20,8 @@ namespace NovelReader
 
         private void NovelInformationForm_Load(object sender, EventArgs e)
         {
-            lbltitle.Text = _title;
-            lblrating.Text = $"{_rating}";
-            guna2RatingStar1.Value = float.Parse(_rating);
-            NovelReaderWebScrapper.DataConstructor.NovelSummaryData NovelDataSummary
-                = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSummary($"{_link}");
-
-            lblauthor.Text = $"{NovelDataSummary.Author} - {NovelDataSummary.Artist}";
-            lblgenre.Text = NovelDataSummary.Genre;
-            lblrelease.Text = $"{NovelDataSummary.Release} - {NovelDataSummary.Status}";
-            pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
-
-            lblsypnosis.Text = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSypnosis($"{_link}").Sypnosis.Trim().TrimStart();
+            Cursor = Cursors.WaitCursor;
+            timer1.Start();
         }
         private async void btnLoad_Click(object sender, EventArgs e)
         {
@@ -74,6 +64,24 @@ namespace NovelReader
                     f1.ShowDialog();
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            timer1.Stop();
+            lbltitle.Text = _title;
+            lblrating.Text = $"{_rating}";
+            guna2RatingStar1.Value = float.Parse(_rating);
+            NovelReaderWebScrapper.DataConstructor.NovelSummaryData NovelDataSummary
+                = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSummary($"{_link}");
+
+            lblauthor.Text = $"{NovelDataSummary.Author} - {NovelDataSummary.Artist}";
+            lblgenre.Text = NovelDataSummary.Genre;
+            lblrelease.Text = $"{NovelDataSummary.Release} - {NovelDataSummary.Status}";
+            pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
+
+            lblsypnosis.Text = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSypnosis($"{_link}").Sypnosis.Trim().TrimStart();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

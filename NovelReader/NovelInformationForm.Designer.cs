@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovelInformationForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblrating = new System.Windows.Forms.Label();
             this.lbltitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -62,6 +62,7 @@
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Read = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -78,9 +79,9 @@
             this.lblrating.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblrating.Location = new System.Drawing.Point(814, 72);
             this.lblrating.Name = "lblrating";
-            this.lblrating.Size = new System.Drawing.Size(80, 25);
+            this.lblrating.Size = new System.Drawing.Size(27, 25);
             this.lblrating.TabIndex = 10;
-            this.lblrating.Text = "{Rating}";
+            this.lblrating.Text = "...";
             // 
             // lbltitle
             // 
@@ -91,7 +92,7 @@
             this.lbltitle.Name = "lbltitle";
             this.lbltitle.Size = new System.Drawing.Size(479, 37);
             this.lbltitle.TabIndex = 7;
-            this.lbltitle.Text = "{Title}";
+            this.lbltitle.Text = "Loading...";
             // 
             // pictureBox1
             // 
@@ -110,9 +111,9 @@
             this.lblauthor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblauthor.Location = new System.Drawing.Point(410, 110);
             this.lblauthor.Name = "lblauthor";
-            this.lblauthor.Size = new System.Drawing.Size(115, 19);
+            this.lblauthor.Size = new System.Drawing.Size(67, 19);
             this.lblauthor.TabIndex = 12;
-            this.lblauthor.Text = "{Author} - {Artist}";
+            this.lblauthor.Text = "Loading...";
             // 
             // lblgenre
             // 
@@ -123,7 +124,7 @@
             this.lblgenre.Name = "lblgenre";
             this.lblgenre.Size = new System.Drawing.Size(579, 19);
             this.lblgenre.TabIndex = 16;
-            this.lblgenre.Text = "{Genre}";
+            this.lblgenre.Text = "Loading...";
             // 
             // lblrelease
             // 
@@ -132,9 +133,9 @@
             this.lblrelease.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblrelease.Location = new System.Drawing.Point(255, 111);
             this.lblrelease.Name = "lblrelease";
-            this.lblrelease.Size = new System.Drawing.Size(122, 19);
+            this.lblrelease.Size = new System.Drawing.Size(67, 19);
             this.lblrelease.TabIndex = 18;
-            this.lblrelease.Text = "{Release} - {Status}";
+            this.lblrelease.Text = "Loading...";
             // 
             // guna2ShadowPanel1
             // 
@@ -230,21 +231,21 @@
             this.chapterdatagridview.AllowUserToDeleteRows = false;
             this.chapterdatagridview.AllowUserToResizeColumns = false;
             this.chapterdatagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
-            this.chapterdatagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.chapterdatagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.chapterdatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.chapterdatagridview.BackgroundColor = System.Drawing.Color.White;
             this.chapterdatagridview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chapterdatagridview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.chapterdatagridview.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.chapterdatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.chapterdatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.chapterdatagridview.ColumnHeadersHeight = 21;
             this.chapterdatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.chapterdatagridview.ColumnHeadersVisible = false;
@@ -254,14 +255,14 @@
             this.Date,
             this.Link,
             this.Read});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.chapterdatagridview.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.chapterdatagridview.DefaultCellStyle = dataGridViewCellStyle24;
             this.chapterdatagridview.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.chapterdatagridview.EnableHeadersVisualStyles = false;
             this.chapterdatagridview.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
@@ -407,7 +408,7 @@
             this.lblsypnosis.Name = "lblsypnosis";
             this.lblsypnosis.Size = new System.Drawing.Size(606, 121);
             this.lblsypnosis.TabIndex = 33;
-            this.lblsypnosis.Text = "{Sypnosis}";
+            this.lblsypnosis.Text = "Loading...";
             // 
             // guna2RatingStar1
             // 
@@ -431,8 +432,8 @@
             // Chapter
             // 
             this.Chapter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Chapter.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Chapter.DefaultCellStyle = dataGridViewCellStyle21;
             this.Chapter.FillWeight = 149.2386F;
             this.Chapter.HeaderText = "#";
             this.Chapter.Name = "Chapter";
@@ -450,23 +451,28 @@
             // Link
             // 
             this.Link.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Link.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Link.DefaultCellStyle = dataGridViewCellStyle22;
             this.Link.HeaderText = "Chapter Link";
             this.Link.Name = "Link";
             this.Link.Visible = false;
             // 
             // Read
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle5.NullValue = "Read";
-            this.Read.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle23.NullValue = "Read";
+            this.Read.DefaultCellStyle = dataGridViewCellStyle23;
             this.Read.FillWeight = 50.76142F;
             this.Read.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Read.HeaderText = "";
             this.Read.MinimumWidth = 150;
             this.Read.Name = "Read";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // NovelInformationForm
             // 
@@ -539,5 +545,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Link;
         private System.Windows.Forms.DataGridViewButtonColumn Read;
+        private System.Windows.Forms.Timer timer1;
     }
 }
