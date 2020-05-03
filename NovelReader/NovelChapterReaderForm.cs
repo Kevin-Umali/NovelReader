@@ -14,7 +14,11 @@ namespace NovelReader
         private string _link;
         private string previouschapterlink = string.Empty, nextchapterlink = string.Empty;
         private string yourfont = "Segoe UI";
+
         private List<string> fontNames = FontFamily.Families.Select(f => f.Name).ToList();
+
+        int sourcesite = Properties.Settings.Default.SourceSite;
+
         SpeechSynthesizer speech = new SpeechSynthesizer();
         public NovelChapterReaderForm(string link)
         {
@@ -33,7 +37,7 @@ namespace NovelReader
         }
         private NovelReaderWebScrapper.Model.ChapterTextModel LoadChapterTextData(string url)
         {
-            NovelReaderWebScrapper.Model.ChapterTextModel chapterText = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetChapterText($"{url}");
+            NovelReaderWebScrapper.Model.ChapterTextModel chapterText = SourcePickerMethod.GetChapterTextModel($"{url}", (SourcePickerMethod.Scrapper)sourcesite);
             return chapterText;
         }
         private async void timer1_Tick(object sender, EventArgs e)
@@ -56,12 +60,12 @@ namespace NovelReader
             NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = LoadChapterTextData($"{url}");
 
             await Task.Run(() => LoadChapterTextData(chapterdata.ChapterText,
-                chapterdata.PreviousChapterLink, chapterdata.NextChapterLink));     
+                chapterdata.PreviousChapterLink, chapterdata.NextChapterLink));
         }
-        
+
         private void LoadChapterTextData(string chaptertext, string _previouschapterlink, string _nextchapterlink)
         {
-            if(this.txtChapterText.InvokeRequired)
+            if (this.txtChapterText.InvokeRequired)
             {
                 this.txtChapterText.Invoke(new MethodInvoker(delegate ()
                 {
@@ -77,20 +81,20 @@ namespace NovelReader
                 nextchapterlink = _nextchapterlink;
             }
         }
-        private void btnNext_Click(object sender, EventArgs e)
+        private async void btnNext_Click(object sender, EventArgs e)
         {
             speech.SpeakAsyncCancelAll();
 
             if (!string.IsNullOrEmpty(nextchapterlink))
-                LoadChapterData($"{nextchapterlink}");
+                await LoadChapterData($"{nextchapterlink}");
         }
 
-        private void btnPrev_Click(object sender, EventArgs e)
+        private async void btnPrev_Click(object sender, EventArgs e)
         {
             speech.SpeakAsyncCancelAll();
 
             if (!string.IsNullOrEmpty(previouschapterlink))
-                LoadChapterData($"{previouschapterlink}");
+                await LoadChapterData($"{previouschapterlink}");
         }
 
         #region Text Settings..
@@ -157,10 +161,10 @@ namespace NovelReader
             }
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
+        private async void btnReload_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            LoadChapterData(_link);
+            await LoadChapterData(_link);
             Cursor.Current = Cursors.Default;
         }
 

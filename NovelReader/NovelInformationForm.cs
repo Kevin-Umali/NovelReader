@@ -1,7 +1,6 @@
 ﻿using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace NovelReader
@@ -10,6 +9,7 @@ namespace NovelReader
     {
         string _title, _link, _rating = string.Empty;
         private Guna.UI2.WinForms.Guna2ShadowForm shadowForm = new Guna.UI2.WinForms.Guna2ShadowForm();
+        int sourcesite = Properties.Settings.Default.SourceSite;
         public NovelInformationForm(string title, string link, string rating)
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace NovelReader
             lblrelease.Text = $"{NovelDataSummary.Release} - {NovelDataSummary.Status}";
             pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
 
-            timer2.Start();     
+            timer2.Start();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -48,12 +48,12 @@ namespace NovelReader
         }
         private NovelSypnosisModel PrepareSypnosisData(string url)
         {
-            NovelSypnosisModel novelSypnosis = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSypnosis($"{url}");
+            NovelSypnosisModel novelSypnosis = SourcePickerMethod.GetNovelSypnosisModel(url, (SourcePickerMethod.Scrapper)sourcesite);
             return novelSypnosis;
         }
         private NovelSummaryModel PrepareNovelSummaryData(string url)
         {
-            NovelSummaryModel novelSummary = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSummary($"{url}");
+            NovelSummaryModel novelSummary = SourcePickerMethod.GetNovelSummaryModel(url, (SourcePickerMethod.Scrapper)sourcesite);
             return novelSummary;
         }
 
@@ -67,10 +67,7 @@ namespace NovelReader
         }
         private List<NovelChapterModel> PrepareNovelChapterData(string url)
         {
-            return NovelReaderWebScrapper
-                .Website
-                .BoxNovelScrapper
-                .GetBoxNovelChapterList($"{url}");
+            return SourcePickerMethod.GetNovelChapterModels(url, (SourcePickerMethod.Scrapper)sourcesite);
         }
 
         private async Task LoadChapterDataAsync()

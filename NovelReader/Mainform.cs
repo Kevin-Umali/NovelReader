@@ -15,7 +15,7 @@ namespace NovelReader
 
         string orderby = "alphabet";
 
-        string source = $"{Properties.Settings.Default.Source}";
+        int sourcesite = Properties.Settings.Default.SourceSite;
         string previouslink = string.Empty, nextlink = string.Empty;
         public MainForm()
         {
@@ -33,7 +33,7 @@ namespace NovelReader
             timer1.Stop();
             if (DisposeCard(flowLayoutPanel1))
             {
-                await LoadNovelDataToCardAsync(source, false);
+                await LoadNovelDataToCardAsync(SourcePickerMethod.GetSourceUrl((SourcePickerMethod.Source)sourcesite), false);
                 lblNovelIndicator.Text = "true";
             }
         }
@@ -42,13 +42,15 @@ namespace NovelReader
         private List<NovelDataModel> PrepareNovelData(string url, bool isSearch)
         {
             GetSiteLink(url);
-            List<NovelDataModel> novelDatas = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelData($"{url}", isSearch);
+            Console.WriteLine(url);
+            List<NovelDataModel> novelDatas = SourcePickerMethod.GetNovelDataModels
+                ($"{url}", isSearch, (SourcePickerMethod.Scrapper)sourcesite);
             return novelDatas;
         }
 
         private SiteLinkModel PrepareSiteLinkData(string url)
         {
-            SiteLinkModel siteLinkDatas = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetPreviosNextLinkAndResult($"{url}");
+            SiteLinkModel siteLinkDatas = SourcePickerMethod.GetSiteLinkModel($"{url}", (SourcePickerMethod.Scrapper)sourcesite);
             return siteLinkDatas;
         }
 
@@ -67,18 +69,17 @@ namespace NovelReader
         private async Task LoadNovelDataToCardAsync(string url, bool isSearch)
         {
             List<NovelDataModel> novelDatas = PrepareNovelData($"{url}", isSearch);
-
             List<Task<NovelReaderUserControlLibrary.NovelCard>> novelTasks = new List<Task<NovelReaderUserControlLibrary.NovelCard>>();
 
-            foreach(NovelDataModel novelitem in novelDatas)
+            foreach (NovelDataModel novelitem in novelDatas)
             {
-               novelTasks.Add(Task.Run(() => AddNovelCardValue(novelitem.Title, novelitem.LatestChapter,
-                    novelitem.Link, novelitem.ImgLink, novelitem.Rating)));
+                novelTasks.Add(Task.Run(() => AddNovelCardValue(novelitem.Title, novelitem.LatestChapter,
+                     novelitem.Link, novelitem.ImgLink, novelitem.Rating)));
             }
 
             var result = await Task.WhenAll(novelTasks);
 
-            foreach(var item in result)
+            foreach (var item in result)
             {
                 await Task.Run(() => NovelCardToPanel(item));
             }
@@ -215,13 +216,13 @@ namespace NovelReader
                 if (!string.IsNullOrEmpty(nextlink))
                 {
                     await LoadNovelDataToCardAsync
-                        ($"https://boxnovel.com/?s={txtSearch.Text}&post_type=wp-manga&m_orderby={orderby}", true);
+                        ($"{SourcePickerMethod.GetSourceUrl((SourcePickerMethod.Source)sourcesite)}?s={txtSearch.Text}&post_type=wp-manga&m_orderby={orderby}", true);
                     lblNovelIndicator.Text = "true";
                 }
                 else
                 {
                     await LoadNovelDataToCardAsync
-                        ($"{source}", false);
+                        ($"{SourcePickerMethod.GetSourceUrl((SourcePickerMethod.Source)sourcesite)}", false);
                     lblNovelIndicator.Text = "true";
                 }
             }
@@ -233,6 +234,19 @@ namespace NovelReader
             orderby = btn.Tag.ToString();
         }
 
+        private void rdoBoxnovel_CheckedChanged(object sender, EventArgs e)
+        {
+            Guna.UI2.WinForms.Guna2RadioButton rdo = (Guna.UI2.WinForms.Guna2RadioButton)sender;
+            ChangeSource(Convert.ToInt32(rdo.Tag.ToString()));
+        }
+        private void ChangeSource(int sourcevalue)
+        {
+            sourcesite = sourcevalue;
+            Properties.Settings.Default.SourceSite = sourcevalue;
+            Properties.Settings.Default.Save();
+
+            timer1.Start();
+        }
         private async void btnPrev_Click(object sender, EventArgs e)
         {
             if (DisposeCard(flowLayoutPanel1))

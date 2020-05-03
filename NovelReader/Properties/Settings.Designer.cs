@@ -25,13 +25,13 @@ namespace NovelReader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://boxnovel.com/")]
-        public string Source {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SourceSite {
             get {
-                return ((string)(this["Source"]));
+                return ((int)(this["SourceSite"]));
             }
             set {
-                this["Source"] = value;
+                this["SourceSite"] = value;
             }
         }
     }
