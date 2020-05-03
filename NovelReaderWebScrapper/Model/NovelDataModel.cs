@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace NovelReaderWebScrapper.DataConstructor
+namespace NovelReaderWebScrapper.Model
 {
-    public class NovelData
+    public class NovelDataModel
     {
         public string Title { get; set; }
         public string LatestChapter { get; set; }
@@ -11,7 +11,7 @@ namespace NovelReaderWebScrapper.DataConstructor
         public string Rating { get; set; }
 
         // Construct data
-        public NovelData(string _Title, string _LatestChapter, string _Link, string _ImgLink, string _Rating)
+        public NovelDataModel(string _Title, string _LatestChapter, string _Link, string _ImgLink, string _Rating)
         {
             Title = _Title;
             LatestChapter = _LatestChapter;
@@ -20,7 +20,7 @@ namespace NovelReaderWebScrapper.DataConstructor
             Rating = _Rating;
         }
 
-        ~NovelData()
+        ~NovelDataModel()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();

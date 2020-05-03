@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace NovelReaderWebScrapper.DataConstructor
+namespace NovelReaderWebScrapper.Model
 {
-    public class NovelSypnosisData
+    public class NovelSypnosisModel
     {
         public string Sypnosis { get; set; }
-        public NovelSypnosisData(string _Sypnosis)
+        public NovelSypnosisModel(string _Sypnosis)
         {
             Sypnosis = _Sypnosis;
         }
-        ~NovelSypnosisData()
+        ~NovelSypnosisModel()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();

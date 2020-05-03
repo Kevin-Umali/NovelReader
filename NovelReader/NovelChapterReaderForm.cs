@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Speech.Synthesis;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NovelReader
@@ -24,28 +25,57 @@ namespace NovelReader
             speech.SpeakProgress += new EventHandler<SpeakProgressEventArgs>(SpeechProgress);
             speech.SpeakStarted += new EventHandler<SpeakStartedEventArgs>(SpeechStarted);
             speech.SpeakCompleted += new EventHandler<SpeakCompletedEventArgs>(SpeechCompleted);
-
         }
 
         private void NovelChapterReaderForm_Load(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
             timer1.Start();
         }
-
-        private void LoadChapterData(string url)
+        private NovelReaderWebScrapper.Model.ChapterTextModel LoadChapterTextData(string url)
         {
-            _link = url;
-            lbllink.Text = _link;
-            var extract = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetChapterText($"{url}");
+            NovelReaderWebScrapper.Model.ChapterTextModel chapterText = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetChapterText($"{url}");
+            return chapterText;
+        }
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            foreach (var f in fontNames)
+                guna2ComboBox1.Items.Add(f);
 
-            txtChapterText.Text = extract.ChapterText.Trim();
-
-            previouschapterlink = extract.PreviousChapterLink;
-            nextchapterlink = extract.NextChapterLink;
+            await LoadChapterData(_link);
 
             btnNext.Enabled = (string.IsNullOrEmpty(nextchapterlink) ? false : true);
             btnPrev.Enabled = (string.IsNullOrEmpty(previouschapterlink) ? false : true);
+
+        }
+
+        private async Task LoadChapterData(string url)
+        {
+            _link = url;
+            lbllink.Text = _link;
+            NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = LoadChapterTextData($"{url}");
+
+            await Task.Run(() => LoadChapterTextData(chapterdata.ChapterText,
+                chapterdata.PreviousChapterLink, chapterdata.NextChapterLink));     
+        }
+        
+        private void LoadChapterTextData(string chaptertext, string _previouschapterlink, string _nextchapterlink)
+        {
+            if(this.txtChapterText.InvokeRequired)
+            {
+                this.txtChapterText.Invoke(new MethodInvoker(delegate ()
+                {
+                    txtChapterText.Text = chaptertext.Trim();
+                    previouschapterlink = _previouschapterlink;
+                    nextchapterlink = _nextchapterlink;
+                }));
+            }
+            else
+            {
+                txtChapterText.Text = chaptertext.Trim();
+                previouschapterlink = _previouschapterlink;
+                nextchapterlink = _nextchapterlink;
+            }
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -125,16 +155,6 @@ namespace NovelReader
                 speech.Resume();
                 btnContinue.Text = "Pause";
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1.Stop();
-            foreach (var f in fontNames)
-                guna2ComboBox1.Items.Add(f);
-
-            LoadChapterData(_link);
-            Cursor.Current = Cursors.Default;
         }
 
         private void btnReload_Click(object sender, EventArgs e)

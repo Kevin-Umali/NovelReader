@@ -1,5 +1,5 @@
 ﻿using HtmlAgilityPack;
-using NovelReaderWebScrapper.DataConstructor;
+using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace NovelReaderWebScrapper.Website
     public class BoxNovelScrapper
     {
         // Changing List<Tuple<...,...>> to List<DataConstructor> better structure with element naming convention.
-        public static PreNextAndResultData GetPreviosNextLinkAndResult(string url)
+        public static SiteLinkModel GetPreviosNextLinkAndResult(string url)
         {
             string previous = string.Empty, next = string.Empty, result = string.Empty;
             try
@@ -34,11 +34,11 @@ namespace NovelReaderWebScrapper.Website
             {
                 Console.WriteLine(ex.Message);
             }
-            return new PreNextAndResultData(previous, next, result);
+            return new SiteLinkModel(previous, next, result);
         }
-        public static List<NovelData> GetBoxNovelData(string url, bool isSearch)
+        public static List<NovelDataModel> GetBoxNovelData(string url, bool isSearch)
         {
-            var boxNovelData = new List<NovelData>();
+            var boxNovelData = new List<NovelDataModel>();
             try
             {
                 HtmlWeb htmlWeb = new HtmlWeb();
@@ -50,6 +50,7 @@ namespace NovelReaderWebScrapper.Website
                     HtmlNode[] nodes = doc.DocumentNode.SelectNodes("//div[@class='c-tabs-item__content']").ToArray();
                     foreach (HtmlNode item in nodes)
                     {
+
                         var title = HttpUtility.HtmlDecode(
                             item?.SelectSingleNode(".//h4/a")
                             ?.InnerText
@@ -77,7 +78,7 @@ namespace NovelReaderWebScrapper.Website
                             ?.InnerText
                             );
 
-                        boxNovelData.Add(new NovelData(title, latestchapter, link, imagelink, rating));
+                        boxNovelData.Add(new NovelDataModel(title, latestchapter, link, imagelink, rating));
                     }
                 }
                 else
@@ -112,7 +113,7 @@ namespace NovelReaderWebScrapper.Website
                             ?.InnerText
                             );
 
-                        boxNovelData.Add(new NovelData(title, latestchapter, link, imagelink, rating));
+                        boxNovelData.Add(new NovelDataModel(title, latestchapter, link, imagelink, rating));
                     }
                 }
             }
@@ -125,7 +126,7 @@ namespace NovelReaderWebScrapper.Website
         }
 
 
-        public static NovelSummaryData GetBoxNovelSummary(string url)
+        public static NovelSummaryModel GetBoxNovelSummary(string url)
         {
             string author = string.Empty, artist = string.Empty,
                 genre = string.Empty, release = string.Empty,
@@ -175,11 +176,11 @@ namespace NovelReaderWebScrapper.Website
             }
 
 
-            return new NovelSummaryData(author, artist, genre, release, imglink,
+            return new NovelSummaryModel(author, artist, genre, release, imglink,
                 status.Contains("OnGoing") ? "OnGoing" : "Completed");
         }
 
-        public static NovelSypnosisData GetBoxNovelSypnosis(string url)
+        public static NovelSypnosisModel GetBoxNovelSypnosis(string url)
         {
             string sypnosis = string.Empty;
             try
@@ -203,12 +204,12 @@ namespace NovelReaderWebScrapper.Website
                 Console.WriteLine(ex.Message);
             }
 
-            return new NovelSypnosisData(sypnosis);
+            return new NovelSypnosisModel(sypnosis);
         }
 
-        public static List<NovelChapterData> GetBoxNovelChapterList(string url)
+        public static List<NovelChapterModel> GetBoxNovelChapterList(string url)
         {
-            var ChapterListData = new List<NovelChapterData>();
+            var ChapterListData = new List<NovelChapterModel>();
             try
             {
                 HtmlWeb htmlWeb = new HtmlWeb();
@@ -234,7 +235,7 @@ namespace NovelReaderWebScrapper.Website
                         ?.InnerText
                         ?.Trim());
 
-                    ChapterListData.Add(new NovelChapterData(chapter, chapterlink, daterelease));
+                    ChapterListData.Add(new NovelChapterModel(chapter, chapterlink, daterelease));
                 }
             }
             catch (Exception ex)
@@ -245,7 +246,7 @@ namespace NovelReaderWebScrapper.Website
             return ChapterListData;
         }
 
-        public static ChapterTextData GetChapterText(string url)
+        public static ChapterTextModel GetChapterText(string url)
         {
             string text = string.Empty, previouschapter = string.Empty, nextchapter = string.Empty;
 
@@ -276,7 +277,7 @@ namespace NovelReaderWebScrapper.Website
                 Console.WriteLine(ex.Message);
             }
 
-            return new ChapterTextData(previouschapter, nextchapter, text);
+            return new ChapterTextModel(previouschapter, nextchapter, text);
         }
 
         ~BoxNovelScrapper()

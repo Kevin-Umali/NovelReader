@@ -1,4 +1,4 @@
-﻿using NovelReaderWebScrapper.DataConstructor;
+﻿using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,110 +16,99 @@ namespace NovelReader
         string orderby = "alphabet";
 
         string source = $"{Properties.Settings.Default.Source}";
-        string previous = string.Empty, next = string.Empty;
+        string previouslink = string.Empty, nextlink = string.Empty;
         public MainForm()
         {
             InitializeComponent();
 
             shadowForm.SetShadowForm(this);
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoadData($"{source}", false);
             vscrollHelper = new Guna.UI.Lib.ScrollBar.PanelScrollHelper(flowLayoutPanel1, gunaVScrollBar1, true);
-            this.Focus();
+            timer1.Start();
         }
-        #region Load Novel to Panel
-        void LoadData(string url, bool isSearch)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            if (flowLayoutPanel1.Controls.Count >= 1)
+            timer1.Stop();
+            if (DisposeCard(flowLayoutPanel1))
             {
-                if (DisposeCard(flowLayoutPanel1))
-                {
-                    GetPreviousAndNextUrl($"{url}");
-
-                    List<NovelData> NovelDataList = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelData($"{url}", isSearch);
-                    if (NovelDataList.Count >= 1)
-                    {
-                        noItempanel.SendToBack();
-                        NovelDataAdd(NovelDataList);
-                    }
-                    else
-                    {
-                        noItempanel.BringToFront();
-                    }
-                }
+                await LoadNovelDataToCardAsync(source, false);
+                lblNovelIndicator.Text = "true";
             }
-            else
-            {
-                GetPreviousAndNextUrl(url);
-
-                List<NovelData> NovelDataList = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelData($"{url}", isSearch);
-                if (NovelDataList.Count >= 1)
-                {
-                    noItempanel.SendToBack();
-                    NovelDataAdd(NovelDataList);
-                }
-                else
-                {
-                    noItempanel.BringToFront();
-                }
-            }
-
-            lblNovelIndicator.Text = "true";
-
         }
-        private void NovelDataAdd(List<NovelData> data)
+
+        #region Preparing or load the data in the list.
+        private List<NovelDataModel> PrepareNovelData(string url, bool isSearch)
         {
-            foreach (var item in data)
+            GetSiteLink(url);
+            List<NovelDataModel> novelDatas = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelData($"{url}", isSearch);
+            return novelDatas;
+        }
+
+        private SiteLinkModel PrepareSiteLinkData(string url)
+        {
+            SiteLinkModel siteLinkDatas = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetPreviosNextLinkAndResult($"{url}");
+            return siteLinkDatas;
+        }
+
+        private void GetSiteLink(string url)
+        {
+            SiteLinkModel siteLink = PrepareSiteLinkData($"{url}");
+            nextlink = siteLink.NextLink;
+            previouslink = siteLink.PreviousLink;
+            lblresult.Text = $"{siteLink.Result}";
+
+            btnNext.Enabled = (string.IsNullOrEmpty(nextlink) ? false : true);
+            btnPrev.Enabled = (string.IsNullOrEmpty(previouslink) ? false : true);
+        }
+        #endregion
+
+        private async Task LoadNovelDataToCardAsync(string url, bool isSearch)
+        {
+            List<NovelDataModel> novelDatas = PrepareNovelData($"{url}", isSearch);
+
+            List<Task<NovelReaderUserControlLibrary.NovelCard>> novelTasks = new List<Task<NovelReaderUserControlLibrary.NovelCard>>();
+
+            foreach(NovelDataModel novelitem in novelDatas)
             {
-                System.Threading.Thread.Sleep(20);
-                AddNovelCardAsync(item.Title, item.LatestChapter,
-                    item.Link, item.ImgLink, item.Rating);
+               novelTasks.Add(Task.Run(() => AddNovelCardValue(novelitem.Title, novelitem.LatestChapter,
+                    novelitem.Link, novelitem.ImgLink, novelitem.Rating)));
+            }
+
+            var result = await Task.WhenAll(novelTasks);
+
+            foreach(var item in result)
+            {
+                await Task.Run(() => NovelCardToPanel(item));
             }
         }
-        int valcolor = 0;
-        public async void AddNovelCardAsync(string title, string latestchapter, string link, string imglink, string rating)
+        private NovelReaderUserControlLibrary.NovelCard AddNovelCardValue(string title, string latestchapter, string link, string imglink, string rating)
         {
             NovelReaderUserControlLibrary.NovelCard nc
                 = new NovelReaderUserControlLibrary.NovelCard();
 
-            valcolor = (valcolor.Equals(1) ? 0 : 1);
 
-            nc.SendNovelCardData(title, latestchapter, link, imglink, rating, valcolor);
-
-            await Task.Run(() =>
-            {
-                if (this.flowLayoutPanel1.InvokeRequired)
-                {
-                    this.flowLayoutPanel1.Invoke(new Action(delegate ()
-                    {
-                        flowLayoutPanel1.Controls.Add(nc);
-
-                        flowLayoutPanel1.Invalidate();
-                        flowLayoutPanel1.Update();
-                        flowLayoutPanel1.Refresh();
-                    }));
-                }
-            });
+            return nc.SendNovelCardData(title, latestchapter, link, imglink, rating);
         }
-        #endregion
-        private void GetPreviousAndNextUrl(string url)
+
+        private void NovelCardToPanel(NovelReaderUserControlLibrary.NovelCard novelCard)
         {
-            var extract = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetPreviosNextLinkAndResult($"{url}");
-
-            next = extract.NextLink;
-            previous = extract.PreviousLink;
-            lblresult.Text = $"{extract.Result}";
-
-            btnNext.Enabled = (string.IsNullOrEmpty(next) ? false : true);
-            btnPrev.Enabled = (string.IsNullOrEmpty(previous) ? false : true);
+            if (this.flowLayoutPanel1.InvokeRequired)
+            {
+                this.flowLayoutPanel1.Invoke(new MethodInvoker(delegate ()
+                {
+                    flowLayoutPanel1.Controls.Add(novelCard);
+                }));
+            }
+            else
+            {
+                flowLayoutPanel1.Controls.Add(novelCard);
+            }
         }
 
 
-
-
+        #region Disposing novel card, adding event and removing it.
         static bool DisposeCard(FlowLayoutPanel mypanel)
         {
             foreach (NovelReaderUserControlLibrary.NovelCard novelCard in mypanel.Controls)
@@ -164,7 +153,6 @@ namespace NovelReader
 
         private void AddEventOnNovelCard()
         {
-            ForceCloseMessageBox.ForceMessageBoxClose("Please wait a moment...", 2);
             foreach (var c in this.flowLayoutPanel1.Controls.OfType<NovelReaderUserControlLibrary.NovelCard>())
             {
                 //new ElapsedEventHandler((sender, e) => PlayMusicEvent(sender, e, musicNote))
@@ -183,6 +171,7 @@ namespace NovelReader
                 }
             }
         }
+        #endregion
 
         void NovelCard_Click(object sender, EventArgs e, string title, string link, string rating)
         {
@@ -202,25 +191,40 @@ namespace NovelReader
                 AddEventOnNovelCard();
                 lblNovelIndicator.Text = "false";
             }
-            else
-            {
-
-            }
+            else { }
             this.Focus();
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private async void btnNext_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(next))
-                LoadData($"{next}", false);
+            if (DisposeCard(flowLayoutPanel1))
+            {
+                if (!string.IsNullOrEmpty(nextlink))
+                {
+                    await LoadNovelDataToCardAsync(nextlink, false);
+                    lblNovelIndicator.Text = "true";
+                }
+            }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSearch.Text))
-                LoadData($"https://boxnovel.com/?s={txtSearch.Text}&post_type=wp-manga&m_orderby={orderby}", true);
-            else
-                LoadData($"{source}", false);
+            //search
+            if (DisposeCard(flowLayoutPanel1))
+            {
+                if (!string.IsNullOrEmpty(nextlink))
+                {
+                    await LoadNovelDataToCardAsync
+                        ($"https://boxnovel.com/?s={txtSearch.Text}&post_type=wp-manga&m_orderby={orderby}", true);
+                    lblNovelIndicator.Text = "true";
+                }
+                else
+                {
+                    await LoadNovelDataToCardAsync
+                        ($"{source}", false);
+                    lblNovelIndicator.Text = "true";
+                }
+            }
         }
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
@@ -229,10 +233,16 @@ namespace NovelReader
             orderby = btn.Tag.ToString();
         }
 
-        private void btnPrev_Click(object sender, EventArgs e)
+        private async void btnPrev_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(previous))
-                LoadData($"{previous}", false);
+            if (DisposeCard(flowLayoutPanel1))
+            {
+                if (!string.IsNullOrEmpty(nextlink))
+                {
+                    await LoadNovelDataToCardAsync(previouslink, false);
+                    lblNovelIndicator.Text = "true";
+                }
+            }
         }
     }
 }

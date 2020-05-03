@@ -41,12 +41,11 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 56);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(186, 150);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -61,7 +60,7 @@
             this.lbltitle.ForeColor = System.Drawing.Color.White;
             this.lbltitle.Location = new System.Drawing.Point(0, 0);
             this.lbltitle.Name = "lbltitle";
-            this.lbltitle.Size = new System.Drawing.Size(184, 56);
+            this.lbltitle.Size = new System.Drawing.Size(186, 56);
             this.lbltitle.TabIndex = 1;
             this.lbltitle.Text = "{Title}";
             this.lbltitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -126,7 +125,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblrating);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -138,7 +136,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
             this.Name = "NovelCard";
-            this.Size = new System.Drawing.Size(184, 257);
+            this.Size = new System.Drawing.Size(186, 259);
             this.Load += new System.EventHandler(this.NovelCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

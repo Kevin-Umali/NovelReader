@@ -45,12 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataConstructor\ChapterTextData.cs" />
-    <Compile Include="DataConstructor\NovelChapterData.cs" />
-    <Compile Include="DataConstructor\NovelData.cs" />
-    <Compile Include="DataConstructor\NovelSummaryData.cs" />
-    <Compile Include="DataConstructor\NovelSypnosisData.cs" />
-    <Compile Include="DataConstructor\PreNextAndResultData.cs" />
+    <Compile Include="Model\ChapterTextModel.cs" />
+    <Compile Include="Model\NovelChapterModel.cs" />
+    <Compile Include="Model\NovelDataModel.cs" />
+    <Compile Include="Model\NovelSummaryModel.cs" />
+    <Compile Include="Model\NovelSypnosisData.cs" />
+    <Compile Include="Model\SiteLinkModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringFormat.cs" />
     <Compile Include="Website\BoxNovelScrapper.cs" />

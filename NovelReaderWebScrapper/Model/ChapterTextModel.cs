@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace NovelReaderWebScrapper.DataConstructor
+namespace NovelReaderWebScrapper.Model
 {
-    public class ChapterTextData
+    public class ChapterTextModel
     {
         public string PreviousChapterLink { get; set; }
         public string NextChapterLink { get; set; }
         public string ChapterText { get; set; }
-        public ChapterTextData(string _PreviousChapterLink, string _NextChapterLink, string _ChapterText)
+        public ChapterTextModel(string _PreviousChapterLink, string _NextChapterLink, string _ChapterText)
         {
             PreviousChapterLink = _PreviousChapterLink;
             NextChapterLink = _NextChapterLink;
             ChapterText = _ChapterText;
         }
-        ~ChapterTextData()
+        ~ChapterTextModel()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();

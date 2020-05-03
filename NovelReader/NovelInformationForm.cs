@@ -1,6 +1,7 @@
-﻿using NovelReaderWebScrapper.DataConstructor;
+﻿using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace NovelReader
@@ -20,38 +21,85 @@ namespace NovelReader
 
         private void NovelInformationForm_Load(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
+            lbltitle.Text = _title;
+            lblrating.Text = $"{_rating}";
+            guna2RatingStar1.Value = float.Parse(_rating);
             timer1.Start();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            NovelReaderWebScrapper.Model.NovelSummaryModel NovelDataSummary
+                = PrepareNovelSummaryData($"{_link}");
+
+            lblauthor.Text = $"{NovelDataSummary.Author} - {NovelDataSummary.Artist}";
+            lblgenre.Text = NovelDataSummary.Genre;
+            lblrelease.Text = $"{NovelDataSummary.Release} - {NovelDataSummary.Status}";
+            pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
+
+            timer2.Start();     
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Stop();
+            lblsypnosis.Text = PrepareSypnosisData(_link).Sypnosis.Trim().TrimStart();
+        }
+        private NovelSypnosisModel PrepareSypnosisData(string url)
+        {
+            NovelSypnosisModel novelSypnosis = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSypnosis($"{url}");
+            return novelSypnosis;
+        }
+        private NovelSummaryModel PrepareNovelSummaryData(string url)
+        {
+            NovelSummaryModel novelSummary = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSummary($"{url}");
+            return novelSummary;
+        }
+
         private async void btnLoad_Click(object sender, EventArgs e)
         {
             chapterdatagridview.Rows.Clear();
             chapterdatagridview.Refresh();
-
-            List<NovelChapterData> ChapterDataList = new List<NovelChapterData>
-                (NovelReaderWebScrapper
+            chapterdatagridview.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
+            chapterdatagridview.RowHeadersVisible = false;
+            await LoadChapterDataAsync();
+        }
+        private List<NovelChapterModel> PrepareNovelChapterData(string url)
+        {
+            return NovelReaderWebScrapper
                 .Website
                 .BoxNovelScrapper
-                .GetBoxNovelChapterList($"{_link}"));
-
-            //Action<Tuple<string, string>> body = data =>
-            //{
-            //    guna2DataGridView1.Invoke(new Action(delegate ()
-            //    {
-            //        guna2DataGridView1.Rows.Add(new object[]
-            //        {
-            //            data.Item1,
-            //            data.Item2,
-            //            "Read Now"
-            //        });
-            //    }));
-            //};
-            //Parallel.ForEach(ChapterDataList, body);
-
-            foreach (var item in ChapterDataList)
-                await TaskAsync(item.ChapterName, item.DateRelease, item.ChapterLink).ConfigureAwait(false);
+                .GetBoxNovelChapterList($"{url}");
         }
 
+        private async Task LoadChapterDataAsync()
+        {
+            List<NovelChapterModel> novelChapterDatas = PrepareNovelChapterData(_link);
+
+            foreach (var chapteritem in novelChapterDatas)
+            {
+                await Task.Run(() =>
+                AddDataGridRows(chapteritem.ChapterName, chapteritem.DateRelease, chapteritem.ChapterLink));
+            }
+        }
+
+        private void AddDataGridRows(string chaptername, string daterelease, string link)
+        {
+            if (this.chapterdatagridview.InvokeRequired)
+            {
+                this.chapterdatagridview.Invoke(new MethodInvoker(delegate ()
+                {
+                    chapterdatagridview.Rows.Add(
+                        false,
+                        chaptername,
+                        daterelease,
+                        link,
+                        "Read");
+                }
+                ));
+            }
+        }
         private void chapterdatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (chapterdatagridview.Rows.Count >= 1)
@@ -66,25 +114,6 @@ namespace NovelReader
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1.Stop();
-            lbltitle.Text = _title;
-            lblrating.Text = $"{_rating}";
-            guna2RatingStar1.Value = float.Parse(_rating);
-            NovelReaderWebScrapper.DataConstructor.NovelSummaryData NovelDataSummary
-                = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSummary($"{_link}");
-
-            lblauthor.Text = $"{NovelDataSummary.Author} - {NovelDataSummary.Artist}";
-            lblgenre.Text = NovelDataSummary.Genre;
-            lblrelease.Text = $"{NovelDataSummary.Release} - {NovelDataSummary.Status}";
-            pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
-
-            lblsypnosis.Text = NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelSypnosis($"{_link}").Sypnosis.Trim().TrimStart();
-            Cursor.Current = Cursors.Default;
-        }
-
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Still working on this. Please wait on the next update");
@@ -92,26 +121,26 @@ namespace NovelReader
             //    Console.WriteLine($"{item.Item1} {item.Item2}");
         }
 
-        private async Task TaskAsync(string chaptername, string daterelease, string link)
+        private bool DisposeControl()
         {
-            await Task.Run(() =>
+            chapterdatagridview.Dispose();
+            guna2ShadowPanel1.Dispose();
+            foreach (Control controls in this.Controls)
             {
-                if (this.chapterdatagridview.InvokeRequired)
-                {
-                    this.chapterdatagridview.Invoke(new Action(delegate ()
-                    {
-                        chapterdatagridview.Rows.Add(new object[]
-                        {
-                            false,
-                            chaptername,
-                            daterelease,
-                            link,
-                            "Read"
-                        });
-                    }
-                    ));
-                }
-            });
+                controls.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+            return true;
+        }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            if (DisposeControl())
+            {
+                this.Dispose();
+            }
         }
     }
 }
