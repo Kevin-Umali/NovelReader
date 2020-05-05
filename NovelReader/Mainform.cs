@@ -26,7 +26,7 @@ namespace NovelReader
         private void MainForm_Load(object sender, EventArgs e)
         {
             vscrollHelper = new Guna.UI.Lib.ScrollBar.PanelScrollHelper(flowLayoutPanel1, gunaVScrollBar1, true);
-            timer1.Start();
+            rdoBoxnovel.Checked = true;
         }
         private async void timer1_Tick(object sender, EventArgs e)
         {
@@ -42,7 +42,6 @@ namespace NovelReader
         private List<NovelDataModel> PrepareNovelData(string url, bool isSearch)
         {
             GetSiteLink(url);
-            Console.WriteLine(url);
             List<NovelDataModel> novelDatas = SourcePickerMethod.GetNovelDataModels
                 ($"{url}", isSearch, (SourcePickerMethod.Scrapper)sourcesite);
             return novelDatas;

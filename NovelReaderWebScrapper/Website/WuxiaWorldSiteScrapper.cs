@@ -21,7 +21,6 @@ namespace NovelReaderWebScrapper.Website
                 doc.OptionEmptyCollection = true;
 
                 result = doc.DocumentNode.SelectSingleNode("//div[@class='c-blog__heading style-2 font-heading']/h4")?.InnerText?.Trim()?.ToUpper();
-                Console.WriteLine(result);
                 HtmlNode[] node = doc.DocumentNode.SelectNodes("//div[@class='nav-links']").ToArray();
                 foreach (HtmlNode item in node)
                 {
@@ -41,7 +40,6 @@ namespace NovelReaderWebScrapper.Website
             var wuxiaWorldSiteData = new List<NovelDataModel>();
             try
             {
-                Console.WriteLine(url);
                 HtmlWeb htmlWeb = new HtmlWeb();
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc = htmlWeb.Load($"{url}");
@@ -267,8 +265,6 @@ namespace NovelReaderWebScrapper.Website
                     text += HttpUtility.HtmlDecode(
                         item?.InnerText
                         ) + Environment.NewLine + Environment.NewLine;
-
-                    Console.WriteLine(text);
                 }
             }
             catch (Exception ex)

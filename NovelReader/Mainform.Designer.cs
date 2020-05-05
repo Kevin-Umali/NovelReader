@@ -39,6 +39,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.rdoWuxiaWorldSite = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.rdoBoxnovel = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
@@ -63,9 +66,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.rdoBoxnovel = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rdoWuxiaWorldSite = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
@@ -238,6 +238,67 @@
             this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(1000, 117);
             this.guna2ShadowPanel2.TabIndex = 10;
+            // 
+            // rdoWuxiaWorldSite
+            // 
+            this.rdoWuxiaWorldSite.AutoSize = true;
+            this.rdoWuxiaWorldSite.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoWuxiaWorldSite.CheckedState.BorderThickness = 0;
+            this.rdoWuxiaWorldSite.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoWuxiaWorldSite.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoWuxiaWorldSite.CheckedState.InnerOffset = -4;
+            this.rdoWuxiaWorldSite.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdoWuxiaWorldSite.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.rdoWuxiaWorldSite.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.rdoWuxiaWorldSite.Location = new System.Drawing.Point(151, 65);
+            this.rdoWuxiaWorldSite.Name = "rdoWuxiaWorldSite";
+            this.rdoWuxiaWorldSite.Size = new System.Drawing.Size(126, 22);
+            this.rdoWuxiaWorldSite.TabIndex = 18;
+            this.rdoWuxiaWorldSite.Tag = "1";
+            this.rdoWuxiaWorldSite.Text = "WuxiaWorld.Site";
+            this.rdoWuxiaWorldSite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoWuxiaWorldSite.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoWuxiaWorldSite.UncheckedState.BorderThickness = 2;
+            this.rdoWuxiaWorldSite.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoWuxiaWorldSite.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdoWuxiaWorldSite.UseVisualStyleBackColor = true;
+            this.rdoWuxiaWorldSite.CheckedChanged += new System.EventHandler(this.rdoBoxnovel_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label6.Location = new System.Drawing.Point(11, 66);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 17);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Source:";
+            // 
+            // rdoBoxnovel
+            // 
+            this.rdoBoxnovel.AutoSize = true;
+            this.rdoBoxnovel.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoBoxnovel.CheckedState.BorderThickness = 0;
+            this.rdoBoxnovel.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoBoxnovel.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoBoxnovel.CheckedState.InnerOffset = -4;
+            this.rdoBoxnovel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdoBoxnovel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.rdoBoxnovel.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.rdoBoxnovel.Location = new System.Drawing.Point(68, 65);
+            this.rdoBoxnovel.Name = "rdoBoxnovel";
+            this.rdoBoxnovel.Size = new System.Drawing.Size(84, 22);
+            this.rdoBoxnovel.TabIndex = 16;
+            this.rdoBoxnovel.Tag = "0";
+            this.rdoBoxnovel.Text = "Boxnovel";
+            this.rdoBoxnovel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoBoxnovel.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoBoxnovel.UncheckedState.BorderThickness = 2;
+            this.rdoBoxnovel.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoBoxnovel.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdoBoxnovel.UseVisualStyleBackColor = true;
+            this.rdoBoxnovel.CheckedChanged += new System.EventHandler(this.rdoBoxnovel_CheckedChanged);
             // 
             // guna2Button1
             // 
@@ -500,7 +561,6 @@
             this.lblresult.Name = "lblresult";
             this.lblresult.Size = new System.Drawing.Size(120, 25);
             this.lblresult.TabIndex = 13;
-            this.lblresult.Text = "{Result}";
             this.lblresult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // guna2DragControl1
@@ -696,68 +756,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // rdoBoxnovel
-            // 
-            this.rdoBoxnovel.AutoSize = true;
-            this.rdoBoxnovel.Checked = true;
-            this.rdoBoxnovel.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoBoxnovel.CheckedState.BorderThickness = 0;
-            this.rdoBoxnovel.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoBoxnovel.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoBoxnovel.CheckedState.InnerOffset = -4;
-            this.rdoBoxnovel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdoBoxnovel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rdoBoxnovel.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.rdoBoxnovel.Location = new System.Drawing.Point(68, 65);
-            this.rdoBoxnovel.Name = "rdoBoxnovel";
-            this.rdoBoxnovel.Size = new System.Drawing.Size(84, 22);
-            this.rdoBoxnovel.TabIndex = 16;
-            this.rdoBoxnovel.Tag = "0";
-            this.rdoBoxnovel.Text = "Boxnovel";
-            this.rdoBoxnovel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rdoBoxnovel.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoBoxnovel.UncheckedState.BorderThickness = 2;
-            this.rdoBoxnovel.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoBoxnovel.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoBoxnovel.UseVisualStyleBackColor = true;
-            this.rdoBoxnovel.CheckedChanged += new System.EventHandler(this.rdoBoxnovel_CheckedChanged);
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.label6.Location = new System.Drawing.Point(11, 66);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 17);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Source:";
-            // 
-            // rdoWuxiaWorldSite
-            // 
-            this.rdoWuxiaWorldSite.AutoSize = true;
-            this.rdoWuxiaWorldSite.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoWuxiaWorldSite.CheckedState.BorderThickness = 0;
-            this.rdoWuxiaWorldSite.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoWuxiaWorldSite.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoWuxiaWorldSite.CheckedState.InnerOffset = -4;
-            this.rdoWuxiaWorldSite.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdoWuxiaWorldSite.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rdoWuxiaWorldSite.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.rdoWuxiaWorldSite.Location = new System.Drawing.Point(151, 65);
-            this.rdoWuxiaWorldSite.Name = "rdoWuxiaWorldSite";
-            this.rdoWuxiaWorldSite.Size = new System.Drawing.Size(126, 22);
-            this.rdoWuxiaWorldSite.TabIndex = 18;
-            this.rdoWuxiaWorldSite.Tag = "1";
-            this.rdoWuxiaWorldSite.Text = "WuxiaWorld.Site";
-            this.rdoWuxiaWorldSite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rdoWuxiaWorldSite.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoWuxiaWorldSite.UncheckedState.BorderThickness = 2;
-            this.rdoWuxiaWorldSite.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoWuxiaWorldSite.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoWuxiaWorldSite.UseVisualStyleBackColor = true;
-            this.rdoWuxiaWorldSite.CheckedChanged += new System.EventHandler(this.rdoBoxnovel_CheckedChanged);
             // 
             // MainForm
             // 

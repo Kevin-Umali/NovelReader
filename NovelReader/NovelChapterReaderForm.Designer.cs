@@ -449,9 +449,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.label5.Location = new System.Drawing.Point(500, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 17);
+            this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Text Size";
+            this.label5.Text = "Text Font";
             // 
             // label3
             // 

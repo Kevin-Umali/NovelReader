@@ -1,6 +1,7 @@
 ﻿using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace NovelReader
@@ -10,6 +11,7 @@ namespace NovelReader
         string _title, _link, _rating = string.Empty;
         private Guna.UI2.WinForms.Guna2ShadowForm shadowForm = new Guna.UI2.WinForms.Guna2ShadowForm();
         int sourcesite = Properties.Settings.Default.SourceSite;
+
         public NovelInformationForm(string title, string link, string rating)
         {
             InitializeComponent();
@@ -99,8 +101,11 @@ namespace NovelReader
         }
         private void chapterdatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+
             if (chapterdatagridview.Rows.Count >= 1)
             {
+
                 if (e.ColumnIndex == 4)
                 {
                     this.Hide();
@@ -116,6 +121,17 @@ namespace NovelReader
             MessageBox.Show("Still working on this. Please wait on the next update");
             //foreach (var item in NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelChapterList($"{_link}"))
             //    Console.WriteLine($"{item.Item1} {item.Item2}");
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            DownloadForm f1 = new DownloadForm();
+            f1.SendDownloadData(PrepareNovelChapterData(_link), _title);
+            f1.ShowDialog();
+            f1.Dispose();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
 
         private bool DisposeControl()

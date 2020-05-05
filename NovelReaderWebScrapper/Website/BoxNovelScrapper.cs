@@ -22,7 +22,6 @@ namespace NovelReaderWebScrapper.Website
                 doc.OptionEmptyCollection = true;
 
                 result = doc.DocumentNode.SelectSingleNode("//div[@class='c-blog__heading style-2 font-heading']/h4")?.InnerText?.Trim()?.ToUpper();
-                Console.WriteLine(result);
                 HtmlNode[] node = doc.DocumentNode.SelectNodes("//div[@class='nav-links']").ToArray();
                 foreach (HtmlNode item in node)
                 {
@@ -268,8 +267,6 @@ namespace NovelReaderWebScrapper.Website
                     text += HttpUtility.HtmlDecode(
                         item?.InnerText
                         ) + Environment.NewLine + Environment.NewLine;
-
-                    Console.WriteLine(text);
                 }
             }
             catch (Exception ex)

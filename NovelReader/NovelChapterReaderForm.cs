@@ -27,7 +27,6 @@ namespace NovelReader
 
             speech.SelectVoice("Microsoft Zira Desktop");
             speech.SpeakProgress += new EventHandler<SpeakProgressEventArgs>(SpeechProgress);
-            speech.SpeakStarted += new EventHandler<SpeakStartedEventArgs>(SpeechStarted);
             speech.SpeakCompleted += new EventHandler<SpeakCompletedEventArgs>(SpeechCompleted);
         }
 
@@ -35,7 +34,7 @@ namespace NovelReader
         {
             timer1.Start();
         }
-        private NovelReaderWebScrapper.Model.ChapterTextModel LoadChapterTextData(string url)
+        private NovelReaderWebScrapper.Model.ChapterTextModel PrepareChapterTextData(string url)
         {
             NovelReaderWebScrapper.Model.ChapterTextModel chapterText = SourcePickerMethod.GetChapterTextModel($"{url}", (SourcePickerMethod.Scrapper)sourcesite);
             return chapterText;
@@ -57,7 +56,7 @@ namespace NovelReader
         {
             _link = url;
             lbllink.Text = _link;
-            NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = LoadChapterTextData($"{url}");
+            NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = PrepareChapterTextData($"{url}");
 
             await Task.Run(() => LoadChapterTextData(chapterdata.ChapterText,
                 chapterdata.PreviousChapterLink, chapterdata.NextChapterLink));
@@ -130,11 +129,6 @@ namespace NovelReader
             btnContinue.Enabled = false;
             txtChapterText.SelectedText = "";
             txtChapterText.DeselectAll();
-        }
-
-        private void SpeechStarted(object sender, SpeakStartedEventArgs e)
-        {
-            Console.WriteLine("Speech Started");
         }
         private void SpeechProgress(object sender, SpeakProgressEventArgs e)
         {
