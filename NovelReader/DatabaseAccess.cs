@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.IO;
+using System.Windows.Forms;
 
 namespace NovelReader
 {
@@ -44,7 +45,7 @@ namespace NovelReader
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return dt;
         }
@@ -86,7 +87,7 @@ namespace NovelReader
                             }
                             catch(Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                MessageBox.Show(ex.Message);
                                 return false;
                             }
                         }
@@ -95,7 +96,7 @@ namespace NovelReader
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
                 return false;
             }
             return false;
@@ -130,7 +131,7 @@ namespace NovelReader
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                MessageBox.Show(ex.Message);
                                 return false;
                             }
                         }
@@ -138,7 +139,7 @@ namespace NovelReader
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -199,7 +200,7 @@ namespace NovelReader
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return (sourcesite, chapterlink);
         }
@@ -240,7 +241,7 @@ namespace NovelReader
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                MessageBox.Show(ex.Message);
                                 return false;
                             }
                         }
@@ -249,7 +250,7 @@ namespace NovelReader
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
                 return false;
             }
             return false;
@@ -284,7 +285,7 @@ namespace NovelReader
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
@@ -317,14 +318,14 @@ namespace NovelReader
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
         private protected static string LoadConnectionString()
         {
-            return string.Format("Data source={0};Version=3;New=False;Compress=True",
-                Directory.GetCurrentDirectory().ToString().Replace(@"\bin\Debug", @"\NovelReaderDB.db"));
+            return string.Format("Data source={0};Version=3;New=False;Compress=True;FailIfMissing=False",
+                (Directory.GetCurrentDirectory().ToString().Replace(@"\bin\Debug", "") + @"\NovelReaderDB.db").Replace(@"\", @"\\"));
         }
     }
 }
