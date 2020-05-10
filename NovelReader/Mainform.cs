@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -175,7 +176,7 @@ namespace NovelReader
 
         void NovelCard_Click(object sender, EventArgs e, string title, string link, string rating)
         {
-            NovelInformationForm f1 = new NovelInformationForm(title, link, rating);
+            NovelInformationForm f1 = new NovelInformationForm(title, link, rating, sourcesite);
             f1.ShowDialog();
             f1.pictureBox1.Dispose();
             f1.Dispose();

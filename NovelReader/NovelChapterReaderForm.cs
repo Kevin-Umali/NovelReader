@@ -11,20 +11,21 @@ namespace NovelReader
 {
     public partial class NovelChapterReaderForm : Form
     {
-        private string _link;
+        private string _link = string.Empty, _title = string.Empty;
         private string previouschapterlink = string.Empty, nextchapterlink = string.Empty;
         private string yourfont = "Segoe UI";
 
         private List<string> fontNames = FontFamily.Families.Select(f => f.Name).ToList();
 
-        int sourcesite = Properties.Settings.Default.SourceSite;
+        int _sourcesite;
 
         SpeechSynthesizer speech = new SpeechSynthesizer();
-        public NovelChapterReaderForm(string link)
+        public NovelChapterReaderForm(string title, string link, int sourcesite)
         {
             InitializeComponent();
+            _title = title;
             _link = link;
-
+            _sourcesite = sourcesite;
             speech.SelectVoice("Microsoft Zira Desktop");
             speech.SpeakProgress += new EventHandler<SpeakProgressEventArgs>(SpeechProgress);
             speech.SpeakCompleted += new EventHandler<SpeakCompletedEventArgs>(SpeechCompleted);
@@ -36,7 +37,7 @@ namespace NovelReader
         }
         private NovelReaderWebScrapper.Model.ChapterTextModel PrepareChapterTextData(string url)
         {
-            NovelReaderWebScrapper.Model.ChapterTextModel chapterText = SourcePickerMethod.GetChapterTextModel($"{url}", (SourcePickerMethod.Scrapper)sourcesite);
+            NovelReaderWebScrapper.Model.ChapterTextModel chapterText = SourcePickerMethod.GetChapterTextModel($"{url}", (SourcePickerMethod.Scrapper)_sourcesite);
             return chapterText;
         }
         private async void timer1_Tick(object sender, EventArgs e)
@@ -46,7 +47,6 @@ namespace NovelReader
                 guna2ComboBox1.Items.Add(f);
 
             await LoadChapterData(_link);
-
             btnNext.Enabled = (string.IsNullOrEmpty(nextchapterlink) ? false : true);
             btnPrev.Enabled = (string.IsNullOrEmpty(previouschapterlink) ? false : true);
 
@@ -55,11 +55,12 @@ namespace NovelReader
         private async Task LoadChapterData(string url)
         {
             _link = url;
-            lbllink.Text = _link;
             NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = PrepareChapterTextData($"{url}");
 
             await Task.Run(() => LoadChapterTextData(chapterdata.ChapterText,
                 chapterdata.PreviousChapterLink, chapterdata.NextChapterLink));
+
+            await Task.Run(() => DatabaseAccess.UpdatePreviousChapter(_title, _link, _sourcesite));
         }
 
         private void LoadChapterTextData(string chaptertext, string _previouschapterlink, string _nextchapterlink)

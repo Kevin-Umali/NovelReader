@@ -66,6 +66,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
@@ -216,6 +218,7 @@
             // guna2ShadowPanel2
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel2.Controls.Add(this.lblresult);
             this.guna2ShadowPanel2.Controls.Add(this.rdoWuxiaWorldSite);
             this.guna2ShadowPanel2.Controls.Add(this.label6);
             this.guna2ShadowPanel2.Controls.Add(this.rdoBoxnovel);
@@ -555,9 +558,10 @@
             // 
             // lblresult
             // 
+            this.lblresult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblresult.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblresult.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblresult.Location = new System.Drawing.Point(10, 13);
+            this.lblresult.Location = new System.Drawing.Point(877, 89);
             this.lblresult.Name = "lblresult";
             this.lblresult.Size = new System.Drawing.Size(120, 25);
             this.lblresult.TabIndex = 13;
@@ -641,7 +645,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblresult);
+            this.panel1.Controls.Add(this.guna2Button8);
+            this.panel1.Controls.Add(this.guna2Button7);
             this.panel1.Controls.Add(this.guna2Separator1);
             this.panel1.Controls.Add(this.btnPrev);
             this.panel1.Controls.Add(this.btnNext);
@@ -757,6 +762,66 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // guna2Button7
+            // 
+            this.guna2Button7.AutoRoundedCorners = true;
+            this.guna2Button7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button7.BorderRadius = 21;
+            this.guna2Button7.BorderThickness = 2;
+            this.guna2Button7.CheckedState.Parent = this.guna2Button7;
+            this.guna2Button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button7.CustomImages.Parent = this.guna2Button7;
+            this.guna2Button7.Enabled = false;
+            this.guna2Button7.FillColor = System.Drawing.Color.White;
+            this.guna2Button7.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.guna2Button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button7.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.guna2Button7.HoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.HoverState.Parent = this.guna2Button7;
+            this.guna2Button7.Location = new System.Drawing.Point(12, 16);
+            this.guna2Button7.Name = "guna2Button7";
+            this.guna2Button7.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button7.ShadowDecoration.BorderRadius = 21;
+            this.guna2Button7.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button7.ShadowDecoration.Depth = 20;
+            this.guna2Button7.ShadowDecoration.Enabled = true;
+            this.guna2Button7.ShadowDecoration.Parent = this.guna2Button7;
+            this.guna2Button7.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
+            this.guna2Button7.Size = new System.Drawing.Size(116, 45);
+            this.guna2Button7.TabIndex = 14;
+            this.guna2Button7.Text = "Favorites";
+            // 
+            // guna2Button8
+            // 
+            this.guna2Button8.AutoRoundedCorners = true;
+            this.guna2Button8.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button8.BorderRadius = 21;
+            this.guna2Button8.BorderThickness = 2;
+            this.guna2Button8.CheckedState.Parent = this.guna2Button8;
+            this.guna2Button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button8.CustomImages.Parent = this.guna2Button8;
+            this.guna2Button8.Enabled = false;
+            this.guna2Button8.FillColor = System.Drawing.Color.White;
+            this.guna2Button8.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.guna2Button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button8.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.guna2Button8.HoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button8.HoverState.Parent = this.guna2Button8;
+            this.guna2Button8.Location = new System.Drawing.Point(134, 16);
+            this.guna2Button8.Name = "guna2Button8";
+            this.guna2Button8.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button8.ShadowDecoration.BorderRadius = 21;
+            this.guna2Button8.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button8.ShadowDecoration.Depth = 20;
+            this.guna2Button8.ShadowDecoration.Enabled = true;
+            this.guna2Button8.ShadowDecoration.Parent = this.guna2Button8;
+            this.guna2Button8.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
+            this.guna2Button8.Size = new System.Drawing.Size(116, 45);
+            this.guna2Button8.TabIndex = 15;
+            this.guna2Button8.Text = "History";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -830,6 +895,8 @@
         private Guna.UI2.WinForms.Guna2RadioButton rdoWuxiaWorldSite;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2RadioButton rdoBoxnovel;
+        private Guna.UI2.WinForms.Guna2Button guna2Button8;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
     }
 }
 

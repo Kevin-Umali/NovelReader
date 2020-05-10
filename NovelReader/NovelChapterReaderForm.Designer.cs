@@ -39,7 +39,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbllink = new System.Windows.Forms.Label();
             this.btnReload = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
@@ -174,7 +173,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lbllink);
             this.panel1.Controls.Add(this.btnReload);
             this.panel1.Controls.Add(this.guna2Separator1);
             this.panel1.Controls.Add(this.btnPrev);
@@ -184,17 +182,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1280, 75);
             this.panel1.TabIndex = 29;
-            // 
-            // lbllink
-            // 
-            this.lbllink.AutoEllipsis = true;
-            this.lbllink.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lbllink.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbllink.Location = new System.Drawing.Point(929, 15);
-            this.lbllink.Name = "lbllink";
-            this.lbllink.Size = new System.Drawing.Size(341, 48);
-            this.lbllink.TabIndex = 17;
-            this.lbllink.Text = "Loading...";
             // 
             // btnReload
             // 
@@ -618,6 +605,5 @@
         private System.Windows.Forms.RichTextBox txtChapterText;
         private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2Button btnReload;
-        private System.Windows.Forms.Label lbllink;
     }
 }

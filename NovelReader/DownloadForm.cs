@@ -81,7 +81,7 @@ namespace NovelReader
                 else
                 {
                     myDocument.Close();
-                    Update();
+                    UpdateProgress();
                     return;
                 }
             }
@@ -95,10 +95,10 @@ namespace NovelReader
             }
             myDocument.Close();
             GC.Collect();
-            Update();
+            UpdateProgress();
         }
 
-        void Update()
+        void UpdateProgress()
         {
             if (this.guna2CircleProgressBar1.InvokeRequired || this.label1.InvokeRequired)
             {

@@ -8,16 +8,17 @@ namespace NovelReader
 {
     public partial class NovelInformationForm : Form
     {
-        string _title, _link, _rating = string.Empty;
+        string _title = string.Empty, _link = string.Empty, _rating = string.Empty, _imglink = string.Empty;
         private Guna.UI2.WinForms.Guna2ShadowForm shadowForm = new Guna.UI2.WinForms.Guna2ShadowForm();
-        int sourcesite = Properties.Settings.Default.SourceSite;
+        int _sourcesite;
 
-        public NovelInformationForm(string title, string link, string rating)
+        public NovelInformationForm(string title, string link, string rating, int sourcesite)
         {
             InitializeComponent();
             _title = title;
             _link = link;
             _rating = rating;
+            _sourcesite = sourcesite;
             shadowForm.SetShadowForm(this);
         }
 
@@ -38,6 +39,7 @@ namespace NovelReader
             lblauthor.Text = $"{NovelDataSummary.Author} - {NovelDataSummary.Artist}";
             lblgenre.Text = NovelDataSummary.Genre;
             lblrelease.Text = $"{NovelDataSummary.Release} - {NovelDataSummary.Status}";
+            _imglink = NovelDataSummary.ImgLink;
             pictureBox1.LoadAsync(NovelDataSummary.ImgLink);
 
             timer2.Start();
@@ -50,12 +52,12 @@ namespace NovelReader
         }
         private NovelSypnosisModel PrepareSypnosisData(string url)
         {
-            NovelSypnosisModel novelSypnosis = SourcePickerMethod.GetNovelSypnosisModel(url, (SourcePickerMethod.Scrapper)sourcesite);
+            NovelSypnosisModel novelSypnosis = SourcePickerMethod.GetNovelSypnosisModel(url, (SourcePickerMethod.Scrapper)_sourcesite);
             return novelSypnosis;
         }
         private NovelSummaryModel PrepareNovelSummaryData(string url)
         {
-            NovelSummaryModel novelSummary = SourcePickerMethod.GetNovelSummaryModel(url, (SourcePickerMethod.Scrapper)sourcesite);
+            NovelSummaryModel novelSummary = SourcePickerMethod.GetNovelSummaryModel(url, (SourcePickerMethod.Scrapper)_sourcesite);
             return novelSummary;
         }
 
@@ -69,7 +71,7 @@ namespace NovelReader
         }
         private List<NovelChapterModel> PrepareNovelChapterData(string url)
         {
-            return SourcePickerMethod.GetNovelChapterModels(url, (SourcePickerMethod.Scrapper)sourcesite);
+            return SourcePickerMethod.GetNovelChapterModels(url, (SourcePickerMethod.Scrapper)_sourcesite);
         }
 
         private async Task LoadChapterDataAsync()
@@ -109,7 +111,7 @@ namespace NovelReader
                 if (e.ColumnIndex == 4)
                 {
                     this.Hide();
-                    NovelChapterReaderForm f1 = new NovelChapterReaderForm(chapterdatagridview.CurrentRow.Cells["Link"].Value.ToString());
+                    NovelChapterReaderForm f1 = new NovelChapterReaderForm(_title, chapterdatagridview.CurrentRow.Cells["Link"].Value.ToString(), _sourcesite);
                     f1.Closed += (s, args) => this.Close();
                     f1.ShowDialog();
                 }
@@ -118,9 +120,19 @@ namespace NovelReader
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Still working on this. Please wait on the next update");
-            //foreach (var item in NovelReaderWebScrapper.Website.BoxNovelScrapper.GetBoxNovelChapterList($"{_link}"))
-            //    Console.WriteLine($"{item.Item1} {item.Item2}");
+            MessageBox.Show(DatabaseAccess.SaveNovelFavorites(_title, _link, _imglink, _sourcesite) ? "Successfully added to your favorite list" : "Already exist on your favorite list");
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            var data = DatabaseAccess.ContinueReading(_title);
+            if (!string.IsNullOrEmpty(data.chapterlink))
+            {
+                this.Hide();
+                NovelChapterReaderForm f1 = new NovelChapterReaderForm(_title, data.chapterlink, data.sourcesite);
+                f1.Closed += (s, args) => this.Close();
+                f1.ShowDialog();
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
