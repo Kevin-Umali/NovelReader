@@ -5,7 +5,7 @@
 <h1 align="center">Light/Web Novel Reader Desktop Application</h1>
 
 ## Novel Reader
-A Light Novel or Web Novel Reader for Windows/Desktop, this app use webscrapping for getting data to website showing it to the app. Download the pre-release version [Download](https://github.com/Keumjoh/NovelReader/releases/download/v1.0/NovelReaderInstaller.zip) - [Another Link](https://mega.nz/file/sAhnyYDL#D4LrU_vajXsxxSxZ6NrDRcTnf72RKAMEodoN5G6qLwI)
+A Light Novel or Web Novel Reader for Windows/Desktop, this app use webscrapping for getting data to website showing it to the app. Download the pre-release version [NovelReader v2.zip](https://github.com/Keumjoh/NovelReader/files/4605519/NovelReader.v2.zip) - [Another Link](https://sourceforge.net/projects/light-web-novelreader/files/latest/download)
 
 Website Source
  - [BoxNovel](https://boxnovel.com/)
