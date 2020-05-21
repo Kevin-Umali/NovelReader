@@ -118,6 +118,24 @@ namespace NovelReader
             }
         }
 
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            timer3.Start();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            timer3.Stop();
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+            this.Dispose();
+        }
+
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(DatabaseAccess.SaveNovelFavorites(_title, _link, _imglink, _sourcesite) ? "Successfully added to your favorite list" : "Already exist on your favorite list");
@@ -128,9 +146,16 @@ namespace NovelReader
             var data = DatabaseAccess.ContinueReading(_title);
             if (!string.IsNullOrEmpty(data.chapterlink))
             {
+                foreach (Control ctrl in this.Controls)
+                {
+                    ctrl.Dispose();
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+                }
                 this.Hide();
                 NovelChapterReaderForm f1 = new NovelChapterReaderForm(_title, data.chapterlink, data.sourcesite);
-                f1.Closed += (s, args) => this.Close();
+                f1.Closed += (s, args) => this.Dispose();
                 f1.ShowDialog();
             }
         }

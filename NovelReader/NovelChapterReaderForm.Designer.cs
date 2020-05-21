@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovelChapterReaderForm));
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -58,6 +58,7 @@
             this.txtChapterText = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -70,10 +71,10 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.guna2ShadowPanel1.Controls.Add(this.gunaControlBox1);
             this.guna2ShadowPanel1.Controls.Add(this.label1);
             this.guna2ShadowPanel1.Controls.Add(this.pictureBox2);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox3);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox1);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox2);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
@@ -85,6 +86,24 @@
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(1280, 52);
             this.guna2ShadowPanel1.TabIndex = 25;
+            // 
+            // gunaControlBox1
+            // 
+            this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaControlBox1.AnimationHoverSpeed = 0.07F;
+            this.gunaControlBox1.AnimationSpeed = 0.03F;
+            this.gunaControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaControlBox1.CustomClick = true;
+            this.gunaControlBox1.IconColor = System.Drawing.Color.White;
+            this.gunaControlBox1.IconSize = 15F;
+            this.gunaControlBox1.Location = new System.Drawing.Point(1241, 0);
+            this.gunaControlBox1.Name = "gunaControlBox1";
+            this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(165)))), ((int)(((byte)(194)))));
+            this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
+            this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaControlBox1.Size = new System.Drawing.Size(39, 29);
+            this.gunaControlBox1.TabIndex = 36;
+            this.gunaControlBox1.Click += new System.EventHandler(this.gunaControlBox1_Click);
             // 
             // label1
             // 
@@ -125,20 +144,6 @@
             this.guna2ControlBox3.Size = new System.Drawing.Size(39, 29);
             this.guna2ControlBox3.TabIndex = 12;
             this.guna2ControlBox3.UseTransparentBackground = true;
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1241, 0);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.Size = new System.Drawing.Size(39, 29);
-            this.guna2ControlBox1.TabIndex = 10;
-            this.guna2ControlBox1.UseTransparentBackground = true;
             // 
             // guna2ControlBox2
             // 
@@ -543,6 +548,10 @@
             // 
             this.guna2DragControl1.TargetControl = this.guna2ShadowPanel1;
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // NovelChapterReaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,7 +592,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
@@ -607,5 +615,7 @@
         private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2Button btnReload;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private System.Windows.Forms.Timer timer2;
+        private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
     }
 }

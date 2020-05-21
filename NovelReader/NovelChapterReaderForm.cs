@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -155,6 +156,28 @@ namespace NovelReader
                 speech.Resume();
                 btnContinue.Text = "Pause";
             }
+        }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Stop();
+            speech.SpeakProgress -= SpeechProgress;
+            speech.SpeakCompleted -= SpeechCompleted;
+
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+
+            this.Dispose();
         }
 
         private async void btnReload_Click(object sender, EventArgs e)

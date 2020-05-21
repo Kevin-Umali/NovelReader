@@ -20,7 +20,7 @@ namespace NovelReader
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            DisposeandAdd(new UserControlLibrary.BrowseNovelUC());
         }
 
         private void guna2Button9_Click(object sender, EventArgs e)
