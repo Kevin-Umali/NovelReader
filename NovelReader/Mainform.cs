@@ -41,5 +41,10 @@ namespace NovelReader
             uc.Dock = DockStyle.Fill;
             mainpanel.Controls.Add(uc);
         }
+
+        private void guna2Button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Working on it.");
+        }
     }
 }

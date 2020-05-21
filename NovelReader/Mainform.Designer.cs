@@ -167,6 +167,7 @@
             this.guna2Button11.Text = "History";
             this.guna2Button11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button11.TextOffset = new System.Drawing.Point(35, 0);
+            this.guna2Button11.Click += new System.EventHandler(this.guna2Button10_Click);
             // 
             // guna2Button10
             // 
@@ -199,6 +200,7 @@
             this.guna2Button10.Text = "Favorite Novels";
             this.guna2Button10.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button10.TextOffset = new System.Drawing.Point(35, 0);
+            this.guna2Button10.Click += new System.EventHandler(this.guna2Button10_Click);
             // 
             // guna2Button9
             // 
