@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovelReaderUI", "NovelReade
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovelReaderWebScrapper", "NovelReaderWebScrapper\NovelReaderWebScrapper.csproj", "{033ABABE-560F-4B50-9130-E40ABFD67CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovelReaderUserControlLibrary", "NovelReaderUserControlLibrary\NovelReaderUserControlLibrary.csproj", "{F8F759E6-D00B-40A3-BD6E-AFA903EC8577}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{033ABABE-560F-4B50-9130-E40ABFD67CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{033ABABE-560F-4B50-9130-E40ABFD67CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{033ABABE-560F-4B50-9130-E40ABFD67CC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8F759E6-D00B-40A3-BD6E-AFA903EC8577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8F759E6-D00B-40A3-BD6E-AFA903EC8577}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8F759E6-D00B-40A3-BD6E-AFA903EC8577}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8F759E6-D00B-40A3-BD6E-AFA903EC8577}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

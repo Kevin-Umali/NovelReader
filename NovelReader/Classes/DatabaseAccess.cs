@@ -10,7 +10,7 @@ using System.Data;
 using System.IO;
 using System.Windows.Forms;
 
-namespace NovelReader
+namespace NovelReader.Classes
 {
     public class DatabaseAccess
     {

@@ -1,4 +1,5 @@
-﻿using NovelReaderWebScrapper.Model;
+﻿using NovelReader.Classes;
+using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace NovelReader
         string _title = string.Empty, _link = string.Empty, _rating = string.Empty, _imglink = string.Empty;
         private Guna.UI2.WinForms.Guna2ShadowForm shadowForm = new Guna.UI2.WinForms.Guna2ShadowForm();
         int _sourcesite;
-
         public NovelInformationForm(string title, string link, string rating, int sourcesite)
         {
             InitializeComponent();
@@ -24,6 +24,7 @@ namespace NovelReader
 
         private void NovelInformationForm_Load(object sender, EventArgs e)
         {
+            
             lbltitle.Text = _title;
             lblrating.Text = $"{_rating}";
             guna2RatingStar1.Value = float.Parse(_rating);
@@ -92,7 +93,6 @@ namespace NovelReader
                 this.chapterdatagridview.Invoke(new MethodInvoker(delegate ()
                 {
                     chapterdatagridview.Rows.Add(
-                        false,
                         chaptername,
                         daterelease,
                         link,
@@ -108,7 +108,7 @@ namespace NovelReader
             if (chapterdatagridview.Rows.Count >= 1)
             {
 
-                if (e.ColumnIndex == 4)
+                if (e.ColumnIndex == 3)
                 {
                     this.Hide();
                     NovelChapterReaderForm f1 = new NovelChapterReaderForm(_title, chapterdatagridview.CurrentRow.Cells["Link"].Value.ToString(), _sourcesite);
@@ -137,7 +137,7 @@ namespace NovelReader
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            DownloadForm f1 = new DownloadForm();
+            DownloadForm f1 = new DownloadForm(_sourcesite);
             f1.SendDownloadData(PrepareNovelChapterData(_link), _title);
             f1.ShowDialog();
             f1.Dispose();
@@ -146,26 +146,25 @@ namespace NovelReader
             GC.Collect();
         }
 
-        private bool DisposeControl()
-        {
-            chapterdatagridview.Dispose();
-            guna2ShadowPanel1.Dispose();
-            foreach (Control controls in this.Controls)
-            {
-                controls.Dispose();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-            }
-            return true;
-        }
-
-        private void gunaControlBox1_Click(object sender, EventArgs e)
-        {
-            if (DisposeControl())
-            {
-                this.Dispose();
-            }
-        }
+        //private bool DisposeControl()
+        //{
+        //    chapterdatagridview.Dispose();
+        //    guna2ShadowPanel1.Dispose();
+        //    foreach (Control controls in this.Controls)
+        //    {
+        //        controls.Dispose();
+        //        GC.Collect();
+        //        GC.WaitForPendingFinalizers();
+        //        GC.Collect();
+        //    }
+        //    return true;
+        //}
+        //private void gunaControlBox1_Click(object sender, EventArgs e)
+        //{
+        //    if (DisposeControl())
+        //    {
+        //        this.Dispose();
+        //    }
+        //}
     }
 }

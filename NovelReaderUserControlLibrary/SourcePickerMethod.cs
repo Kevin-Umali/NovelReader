@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NovelReader
+namespace NovelReaderUserControlLibrary
 {
     public class SourcePickerMethod
     {

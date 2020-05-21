@@ -40,7 +40,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReload = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -58,6 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtChapterText = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,14 +69,14 @@
             // 
             // guna2ShadowPanel1
             // 
-            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.guna2ShadowPanel1.Controls.Add(this.label1);
             this.guna2ShadowPanel1.Controls.Add(this.pictureBox2);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox3);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox1);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox2);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
+            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -88,7 +88,9 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.label1.Font = new System.Drawing.Font("Komoda", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(56, 0);
@@ -100,7 +102,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
@@ -158,29 +160,28 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 127);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 518);
+            this.panel3.Size = new System.Drawing.Size(10, 524);
             this.panel3.TabIndex = 31;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1270, 127);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 518);
+            this.panel2.Size = new System.Drawing.Size(10, 524);
             this.panel2.TabIndex = 30;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.panel1.Controls.Add(this.btnReload);
-            this.panel1.Controls.Add(this.guna2Separator1);
             this.panel1.Controls.Add(this.btnPrev);
             this.panel1.Controls.Add(this.btnNext);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 645);
+            this.panel1.Location = new System.Drawing.Point(0, 651);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 75);
+            this.panel1.Size = new System.Drawing.Size(1280, 69);
             this.panel1.TabIndex = 29;
             // 
             // btnReload
@@ -193,13 +194,13 @@
             this.btnReload.CheckedState.Parent = this.btnReload;
             this.btnReload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReload.CustomImages.Parent = this.btnReload;
-            this.btnReload.FillColor = System.Drawing.Color.White;
+            this.btnReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnReload.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.btnReload.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnReload.HoverState.Parent = this.btnReload;
-            this.btnReload.Location = new System.Drawing.Point(12, 16);
+            this.btnReload.Location = new System.Drawing.Point(10, 15);
             this.btnReload.Name = "btnReload";
             this.btnReload.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnReload.ShadowDecoration.BorderRadius = 21;
@@ -208,18 +209,10 @@
             this.btnReload.ShadowDecoration.Enabled = true;
             this.btnReload.ShadowDecoration.Parent = this.btnReload;
             this.btnReload.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(3);
-            this.btnReload.Size = new System.Drawing.Size(116, 45);
+            this.btnReload.Size = new System.Drawing.Size(184, 45);
             this.btnReload.TabIndex = 13;
             this.btnReload.Text = "Reload";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Separator1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(1280, 10);
-            this.guna2Separator1.TabIndex = 1;
             // 
             // btnPrev
             // 
@@ -237,7 +230,7 @@
             this.btnPrev.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.btnPrev.HoverState.Parent = this.btnPrev;
             this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
-            this.btnPrev.Location = new System.Drawing.Point(475, 18);
+            this.btnPrev.Location = new System.Drawing.Point(475, 15);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnPrev.ShadowDecoration.BorderRadius = 21;
@@ -268,7 +261,7 @@
             this.btnNext.HoverState.Parent = this.btnNext;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.ImageOffset = new System.Drawing.Point(40, 0);
-            this.btnNext.Location = new System.Drawing.Point(647, 18);
+            this.btnNext.Location = new System.Drawing.Point(647, 15);
             this.btnNext.Name = "btnNext";
             this.btnNext.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnNext.ShadowDecoration.BorderRadius = 21;
@@ -300,7 +293,7 @@
             this.guna2ShadowPanel2.Controls.Add(this.pictureBox1);
             this.guna2ShadowPanel2.Controls.Add(this.label4);
             this.guna2ShadowPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(0, 52);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -322,7 +315,7 @@
             this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStop.CustomImages.Parent = this.btnStop;
             this.btnStop.Enabled = false;
-            this.btnStop.FillColor = System.Drawing.Color.White;
+            this.btnStop.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.btnStop.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnStop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(148)))));
             this.btnStop.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
@@ -354,7 +347,7 @@
             this.btnContinue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnContinue.CustomImages.Parent = this.btnContinue;
             this.btnContinue.Enabled = false;
-            this.btnContinue.FillColor = System.Drawing.Color.White;
+            this.btnContinue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.btnContinue.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnContinue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(255)))), ((int)(((byte)(148)))));
             this.btnContinue.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
@@ -385,7 +378,7 @@
             this.btnRead.CheckedState.Parent = this.btnRead;
             this.btnRead.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRead.CustomImages.Parent = this.btnRead;
-            this.btnRead.FillColor = System.Drawing.Color.White;
+            this.btnRead.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.btnRead.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnRead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnRead.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
@@ -413,6 +406,7 @@
             this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.guna2ComboBox1.DropDownHeight = 500;
             this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
             this.guna2ComboBox1.FocusedColor = System.Drawing.Color.Empty;
             this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -434,6 +428,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.label5.Location = new System.Drawing.Point(500, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 17);
@@ -444,6 +439,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.label3.Location = new System.Drawing.Point(183, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 17);
@@ -452,7 +448,7 @@
             // 
             // guna2TrackBar1
             // 
-            this.guna2TrackBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.guna2TrackBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.guna2TrackBar1.HoverState.Parent = this.guna2TrackBar1;
             this.guna2TrackBar1.LargeChange = 2;
             this.guna2TrackBar1.Location = new System.Drawing.Point(186, 23);
@@ -470,6 +466,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.label2.Location = new System.Drawing.Point(12, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 17);
@@ -516,6 +513,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.label4.Location = new System.Drawing.Point(237, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 17);
@@ -524,16 +522,16 @@
             // 
             // txtChapterText
             // 
-            this.txtChapterText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtChapterText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(61)))));
             this.txtChapterText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChapterText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtChapterText.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtChapterText.ForeColor = System.Drawing.Color.Black;
+            this.txtChapterText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.txtChapterText.Location = new System.Drawing.Point(10, 127);
             this.txtChapterText.Name = "txtChapterText";
             this.txtChapterText.ReadOnly = true;
             this.txtChapterText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.txtChapterText.Size = new System.Drawing.Size(1260, 518);
+            this.txtChapterText.Size = new System.Drawing.Size(1260, 524);
             this.txtChapterText.TabIndex = 33;
             this.txtChapterText.Text = "Loading...";
             // 
@@ -541,11 +539,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.guna2ShadowPanel1;
+            // 
             // NovelChapterReaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.txtChapterText);
             this.Controls.Add(this.panel2);
@@ -586,7 +588,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2Button btnPrev;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
@@ -605,5 +606,6 @@
         private System.Windows.Forms.RichTextBox txtChapterText;
         private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2Button btnReload;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
