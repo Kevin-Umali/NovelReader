@@ -30,17 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Guna.UI">
-      <HintPath>..\..\..\..\Downloads\Compressed\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\..\Downloads\Compressed\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowseNovelUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BrowseNovelUC.Designer.cs">
-      <DependentUpon>BrowseNovelUC.cs</DependentUpon>
-    </Compile>
     <Compile Include="NovelCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -65,26 +54,12 @@
       <DependentUpon>NovelCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourcePickerMethod.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BrowseNovelUC.resx">
-      <DependentUpon>BrowseNovelUC.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="NovelCard.resx">
       <DependentUpon>NovelCard.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NovelReaderWebScrapper\NovelReaderWebScrapper.csproj">
-      <Project>{033ABABE-560F-4B50-9130-E40ABFD67CC6}</Project>
-      <Name>NovelReaderWebScrapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NovelReader\NovelReaderUI.csproj">
-      <Project>{c042056d-6bfa-4be0-8939-511a8c454e22}</Project>
-      <Name>NovelReaderUI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
