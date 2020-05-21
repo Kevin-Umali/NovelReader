@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using NovelReader.Classes;
 using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
@@ -19,10 +20,11 @@ namespace NovelReader
         private List<NovelReaderWebScrapper.Model.NovelChapterModel> novelChapters = new List<NovelReaderWebScrapper.Model.NovelChapterModel>();
         private string _title = string.Empty;
         int PercentageComplete = 0;
-        int sourcesite = Properties.Settings.Default.SourceSite;
-        public DownloadForm()
+        int sourcesite;
+        public DownloadForm(int _sourcesite)
         {
             InitializeComponent();
+            sourcesite = _sourcesite;
         }
         public void SendDownloadData(List<NovelReaderWebScrapper.Model.NovelChapterModel> novelChapterModels, string title)
         {

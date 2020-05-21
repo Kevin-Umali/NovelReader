@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NovelReaderUserControlLibrary
+namespace NovelReader.UserControlLibrary
 {
     public partial class NovelCard : UserControl
     {

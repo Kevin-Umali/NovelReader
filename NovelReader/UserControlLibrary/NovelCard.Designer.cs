@@ -1,4 +1,4 @@
-﻿namespace NovelReaderUserControlLibrary
+﻿namespace NovelReader.UserControlLibrary
 {
     partial class NovelCard
     {
@@ -40,7 +40,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 56);
@@ -53,7 +53,7 @@
             // lbltitle
             // 
             this.lbltitle.AutoEllipsis = true;
-            this.lbltitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(154)))), ((int)(((byte)(255)))));
+            this.lbltitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
             this.lbltitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbltitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbltitle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,6 +70,7 @@
             this.lbllatestchapter.AutoEllipsis = true;
             this.lbllatestchapter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbllatestchapter.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.lbllatestchapter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.lbllatestchapter.Location = new System.Drawing.Point(94, 233);
             this.lbllatestchapter.Name = "lbllatestchapter";
             this.lbllatestchapter.Size = new System.Drawing.Size(87, 17);
@@ -82,6 +83,7 @@
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.label1.Location = new System.Drawing.Point(3, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 17);
@@ -93,6 +95,7 @@
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.label2.Location = new System.Drawing.Point(3, 211);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 17);
@@ -104,6 +107,7 @@
             this.lblrating.AutoSize = true;
             this.lblrating.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblrating.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.lblrating.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.lblrating.Location = new System.Drawing.Point(134, 212);
             this.lblrating.Name = "lblrating";
             this.lblrating.Size = new System.Drawing.Size(53, 17);
@@ -113,6 +117,7 @@
             // 
             // guna2RatingStar1
             // 
+            this.guna2RatingStar1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.guna2RatingStar1.BorderThickness = 1;
             this.guna2RatingStar1.Enabled = false;
             this.guna2RatingStar1.Location = new System.Drawing.Point(49, 210);
@@ -124,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
             this.Controls.Add(this.lblrating);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -134,7 +139,7 @@
             this.Controls.Add(this.guna2RatingStar1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 1);
             this.Name = "NovelCard";
             this.Size = new System.Drawing.Size(186, 259);
             this.Load += new System.EventHandler(this.NovelCard_Load);
