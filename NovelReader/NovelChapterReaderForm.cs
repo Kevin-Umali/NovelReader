@@ -201,5 +201,11 @@ namespace NovelReader
                 MessageBox.Show("Select text to read or (CTRL + A) to select it all");
             }
         }
+        ~NovelChapterReaderForm()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
     }
 }

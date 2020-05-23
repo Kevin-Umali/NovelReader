@@ -41,7 +41,6 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.gunaVScrollBar1 = new Guna.UI.WinForms.GunaVScrollBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblNovelIndicator = new System.Windows.Forms.Label();
             this.noItempanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -289,19 +288,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblNovelIndicator
-            // 
-            this.lblNovelIndicator.AutoSize = true;
-            this.lblNovelIndicator.BackColor = System.Drawing.Color.Transparent;
-            this.lblNovelIndicator.ForeColor = System.Drawing.Color.White;
-            this.lblNovelIndicator.Location = new System.Drawing.Point(742, 0);
-            this.lblNovelIndicator.Name = "lblNovelIndicator";
-            this.lblNovelIndicator.Size = new System.Drawing.Size(29, 13);
-            this.lblNovelIndicator.TabIndex = 22;
-            this.lblNovelIndicator.Text = "false";
-            this.lblNovelIndicator.Visible = false;
-            this.lblNovelIndicator.TextChanged += new System.EventHandler(this.lblNovelIndicator_TextChanged);
-            // 
             // noItempanel
             // 
             this.noItempanel.Controls.Add(this.label4);
@@ -366,7 +352,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-            this.Controls.Add(this.lblNovelIndicator);
             this.Controls.Add(this.gunaVScrollBar1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.rdoWuxiaWorldSite);
@@ -402,7 +387,6 @@
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private Guna.UI.WinForms.GunaVScrollBar gunaVScrollBar1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lblNovelIndicator;
         private System.Windows.Forms.Panel noItempanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

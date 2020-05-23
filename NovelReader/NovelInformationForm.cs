@@ -24,7 +24,9 @@ namespace NovelReader
 
         private void NovelInformationForm_Load(object sender, EventArgs e)
         {
-            
+            label1.Text = (_sourcesite == 0) ? "Novel Reader >> Novel Information >> BoxNovel"
+                : (_sourcesite == 1) ? "Novel Reader >> Novel Information >> WuxiaWorld.Site" : "Novel Reader >> Novel Information >> BoxNovel";
+
             lbltitle.Text = _title;
             lblrating.Text = $"{_rating}";
             guna2RatingStar1.Value = float.Parse(_rating);
@@ -191,5 +193,11 @@ namespace NovelReader
         //        this.Dispose();
         //    }
         //}
+        ~NovelInformationForm()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
     }
 }

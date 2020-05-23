@@ -44,7 +44,7 @@ namespace NovelReader
 
         private void guna2Button10_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Working on it.");
+            DisposeandAdd(new UserControlLibrary.FavoriteNovelsUC());
         }
     }
 }

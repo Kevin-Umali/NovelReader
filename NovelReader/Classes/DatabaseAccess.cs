@@ -14,15 +14,23 @@ namespace NovelReader.Classes
 {
     public class DatabaseAccess
     {
-        public static DataTable LoadFavoriteModel()
+        public static List<FavoriteNovelModel> LoadFavoriteData(string search)
         {
+            //List<(string ID, string NovelName, string NovelLink, string ImgLink, int sourcesite)> Data 
+            //    = new List<(string ID, string NovelName, string NovelLink, string ImgLink, int sourcesite)>();
             DataTable dt = new DataTable();
             try
             {
                 using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
                 {
                     sqlcon.Open();
-                    string query = "Select * from NovelFavorites";
+                    string query = string.Empty;
+
+                    if (!string.IsNullOrEmpty(search))
+                        query = $"Select * from NovelFavorites where NovelName LIKE '%{search}%'";
+                    else
+                        query = $"Select * from NovelFavorites";
+
                     using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
                     {
                         using (SQLiteDataReader dr = sqlcmd.ExecuteReader())
@@ -47,7 +55,19 @@ namespace NovelReader.Classes
             {
                 MessageBox.Show(ex.Message);
             }
-            return dt;
+
+            List<FavoriteNovelModel> favoriteNovels = dt.AsEnumerable().Select(
+                    favorite => new FavoriteNovelModel
+                    {
+                        ID = Convert.ToInt32(favorite["ID"]),
+                        NovelName = (string)(favorite["NovelName"]),
+                        NovelLink = (string)(favorite["NovelLink"]),
+                        Img = (string)(favorite["Img"]),
+                        Source = (string)(favorite["Source"]),
+                    }
+                ).ToList();
+
+            return favoriteNovels;
         }
 
         private static bool CheckNovelFavorites(string novel)
@@ -326,6 +346,13 @@ namespace NovelReader.Classes
         {
             return string.Format("Data source={0};Version=3;New=False;Compress=True;FailIfMissing=False",
                 (Directory.GetCurrentDirectory().ToString().Replace(@"\bin\Debug", "") + @"\NovelReaderDB.db").Replace(@"\", @"\\"));
+        }
+
+        ~DatabaseAccess()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
     }
 }

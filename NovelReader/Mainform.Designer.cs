@@ -36,15 +36,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
             this.leftpanel = new System.Windows.Forms.Panel();
             this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.mainpanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.leftpanel.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.leftpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2ControlBox1
@@ -120,6 +120,18 @@
             // 
             this.guna2DragControl1.TargetControl = this.panel3;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.panel3.Controls.Add(this.guna2ControlBox3);
+            this.panel3.Controls.Add(this.guna2ControlBox2);
+            this.panel3.Controls.Add(this.guna2ControlBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(206, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(794, 29);
+            this.panel3.TabIndex = 19;
+            // 
             // leftpanel
             // 
             this.leftpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
@@ -159,7 +171,6 @@
             this.guna2Button11.Name = "guna2Button11";
             this.guna2Button11.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2Button11.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(155)))), ((int)(((byte)(231)))));
-            this.guna2Button11.ShadowDecoration.Enabled = true;
             this.guna2Button11.ShadowDecoration.Parent = this.guna2Button11;
             this.guna2Button11.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.guna2Button11.Size = new System.Drawing.Size(206, 45);
@@ -167,7 +178,6 @@
             this.guna2Button11.Text = "History";
             this.guna2Button11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button11.TextOffset = new System.Drawing.Point(35, 0);
-            this.guna2Button11.Click += new System.EventHandler(this.guna2Button10_Click);
             // 
             // guna2Button10
             // 
@@ -238,18 +248,6 @@
             this.guna2Button9.TextOffset = new System.Drawing.Point(35, 0);
             this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
-            this.panel3.Controls.Add(this.guna2ControlBox3);
-            this.panel3.Controls.Add(this.guna2ControlBox2);
-            this.panel3.Controls.Add(this.guna2ControlBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(206, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(794, 29);
-            this.panel3.TabIndex = 19;
-            // 
             // mainpanel
             // 
             this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -277,8 +275,8 @@
             this.Text = "Novel Reader";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.leftpanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.leftpanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

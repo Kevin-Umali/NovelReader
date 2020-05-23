@@ -1,16 +1,32 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NovelReader.UserControlLibrary
+namespace NovelReader.UserControlLibrary.Cards
 {
     public partial class NovelCard : UserControl
     {
-        public string _title, _latestchapter, _link, _imglink, _rating = string.Empty;
+        public string _title = string.Empty,
+            _latestchapter = string.Empty, _link = string.Empty, 
+            _imglink = string.Empty, _rating = string.Empty;
+
+        int _sourcesite;
+
+        private void lbltitle_Click(object sender, EventArgs e)
+        {
+            NovelInformationForm f1 = new NovelInformationForm(_title, _link, _rating, _sourcesite);
+            f1.ShowDialog();
+            f1.pictureBox1.Dispose();
+            f1.Dispose();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
 
         //private readonly Color[] colors = { Color.FromArgb(234, 240, 255), Color.FromArgb(255, 245, 236) };
-        public NovelCard()
+        public NovelCard(int sourcesite)
         {
             InitializeComponent();
+            _sourcesite = sourcesite;
         }
         public NovelCard SendNovelCardData(string title, string latestchapter, string link, string imglink, string rating)
         {
@@ -33,6 +49,13 @@ namespace NovelReader.UserControlLibrary
 
             if (!string.IsNullOrEmpty(_imglink))
                 pictureBox1.LoadAsync(_imglink);
+        }
+
+        ~NovelCard()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
     }
 }

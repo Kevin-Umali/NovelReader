@@ -1,4 +1,4 @@
-﻿namespace NovelReader.UserControlLibrary
+﻿namespace NovelReader.UserControlLibrary.Cards
 {
     partial class NovelCard
     {
@@ -49,6 +49,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // lbltitle
             // 
@@ -64,6 +65,7 @@
             this.lbltitle.TabIndex = 1;
             this.lbltitle.Text = "{Title}";
             this.lbltitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbltitle.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // lbllatestchapter
             // 
@@ -77,6 +79,7 @@
             this.lbllatestchapter.TabIndex = 2;
             this.lbllatestchapter.Text = "{Chapter}";
             this.lbllatestchapter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbllatestchapter.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // label1
             // 
@@ -89,6 +92,7 @@
             this.label1.Size = new System.Drawing.Size(95, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Latest Chapter:";
+            this.label1.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // label2
             // 
@@ -101,6 +105,7 @@
             this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Rating: ";
+            this.label2.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // lblrating
             // 
@@ -114,6 +119,7 @@
             this.lblrating.TabIndex = 4;
             this.lblrating.Text = "{Rating}";
             this.lblrating.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblrating.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // guna2RatingStar1
             // 
@@ -124,6 +130,7 @@
             this.guna2RatingStar1.Name = "guna2RatingStar1";
             this.guna2RatingStar1.Size = new System.Drawing.Size(88, 23);
             this.guna2RatingStar1.TabIndex = 35;
+            this.guna2RatingStar1.Click += new System.EventHandler(this.lbltitle_Click);
             // 
             // NovelCard
             // 

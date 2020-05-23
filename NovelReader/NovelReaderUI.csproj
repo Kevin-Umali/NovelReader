@@ -149,10 +149,22 @@
     <Compile Include="UserControlLibrary\BrowseNovelUC.Designer.cs">
       <DependentUpon>BrowseNovelUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlLibrary\NovelCard.cs">
+    <Compile Include="UserControlLibrary\Cards\FavoriteNovelCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlLibrary\NovelCard.Designer.cs">
+    <Compile Include="UserControlLibrary\Cards\FavoriteNovelCard.Designer.cs">
+      <DependentUpon>FavoriteNovelCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\FavoriteNovelsUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\FavoriteNovelsUC.Designer.cs">
+      <DependentUpon>FavoriteNovelsUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\Cards\NovelCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\Cards\NovelCard.Designer.cs">
       <DependentUpon>NovelCard.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DownloadForm.resx">
@@ -179,7 +191,13 @@
     <EmbeddedResource Include="UserControlLibrary\BrowseNovelUC.resx">
       <DependentUpon>BrowseNovelUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlLibrary\NovelCard.resx">
+    <EmbeddedResource Include="UserControlLibrary\Cards\FavoriteNovelCard.resx">
+      <DependentUpon>FavoriteNovelCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\FavoriteNovelsUC.resx">
+      <DependentUpon>FavoriteNovelsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\Cards\NovelCard.resx">
       <DependentUpon>NovelCard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
