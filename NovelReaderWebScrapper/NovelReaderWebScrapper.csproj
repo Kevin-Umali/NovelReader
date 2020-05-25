@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Model\ChapterTextModel.cs" />
     <Compile Include="Model\FavoriteNovelModel.cs" />
+    <Compile Include="Model\HistoryModel.cs" />
     <Compile Include="Model\NovelChapterModel.cs" />
     <Compile Include="Model\NovelDataModel.cs" />
     <Compile Include="Model\NovelSummaryModel.cs" />

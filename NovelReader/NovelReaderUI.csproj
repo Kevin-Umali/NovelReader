@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publish app\NovelReaderInstaller\</PublishUrl>
+    <PublishUrl>D:\publish app\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -31,7 +31,7 @@
     <SuiteName>John Kevin Umali</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -116,28 +116,28 @@
   <ItemGroup>
     <Compile Include="AppSingleInstance.cs" />
     <Compile Include="Classes\DatabaseAccess.cs" />
-    <Compile Include="DownloadForm.cs">
+    <Compile Include="FormsLibrary\ChangeLogsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DownloadForm.Designer.cs">
-      <DependentUpon>DownloadForm.cs</DependentUpon>
+    <Compile Include="FormsLibrary\ChangeLogsForm.Designer.cs">
+      <DependentUpon>ChangeLogsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="FormsLibrary\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="FormsLibrary\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NovelChapterReaderForm.cs">
+    <Compile Include="FormsLibrary\NovelChapterReaderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NovelChapterReaderForm.Designer.cs">
+    <Compile Include="FormsLibrary\NovelChapterReaderForm.Designer.cs">
       <DependentUpon>NovelChapterReaderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NovelInformationForm.cs">
+    <Compile Include="FormsLibrary\NovelInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NovelInformationForm.Designer.cs">
+    <Compile Include="FormsLibrary\NovelInformationForm.Designer.cs">
       <DependentUpon>NovelInformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -148,6 +148,12 @@
     </Compile>
     <Compile Include="UserControlLibrary\BrowseNovelUC.Designer.cs">
       <DependentUpon>BrowseNovelUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\Cards\DownloadCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\Cards\DownloadCard.Designer.cs">
+      <DependentUpon>DownloadCard.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlLibrary\Cards\FavoriteNovelCard.cs">
       <SubType>UserControl</SubType>
@@ -167,16 +173,22 @@
     <Compile Include="UserControlLibrary\Cards\NovelCard.Designer.cs">
       <DependentUpon>NovelCard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DownloadForm.resx">
-      <DependentUpon>DownloadForm.cs</DependentUpon>
+    <Compile Include="UserControlLibrary\HistoryUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\HistoryUC.Designer.cs">
+      <DependentUpon>HistoryUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormsLibrary\ChangeLogsForm.resx">
+      <DependentUpon>ChangeLogsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="FormsLibrary\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NovelChapterReaderForm.resx">
+    <EmbeddedResource Include="FormsLibrary\NovelChapterReaderForm.resx">
       <DependentUpon>NovelChapterReaderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NovelInformationForm.resx">
+    <EmbeddedResource Include="FormsLibrary\NovelInformationForm.resx">
       <DependentUpon>NovelInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -191,6 +203,9 @@
     <EmbeddedResource Include="UserControlLibrary\BrowseNovelUC.resx">
       <DependentUpon>BrowseNovelUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\Cards\DownloadCard.resx">
+      <DependentUpon>DownloadCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlLibrary\Cards\FavoriteNovelCard.resx">
       <DependentUpon>FavoriteNovelCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlLibrary\Cards\NovelCard.resx">
       <DependentUpon>NovelCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\HistoryUC.resx">
+      <DependentUpon>HistoryUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>

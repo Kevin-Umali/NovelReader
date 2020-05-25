@@ -1,4 +1,4 @@
-﻿namespace NovelReader
+﻿namespace NovelReader.FormsLibrary
 {
     partial class MainForm
     {
@@ -38,6 +38,10 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftpanel = new System.Windows.Forms.Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.downloadpanel = new System.Windows.Forms.Panel();
             this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
@@ -135,6 +139,10 @@
             // leftpanel
             // 
             this.leftpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.leftpanel.Controls.Add(this.guna2Button1);
+            this.leftpanel.Controls.Add(this.label3);
+            this.leftpanel.Controls.Add(this.label1);
+            this.leftpanel.Controls.Add(this.downloadpanel);
             this.leftpanel.Controls.Add(this.guna2Button11);
             this.leftpanel.Controls.Add(this.guna2Button10);
             this.leftpanel.Controls.Add(this.guna2Button9);
@@ -145,6 +153,75 @@
             this.leftpanel.Name = "leftpanel";
             this.leftpanel.Size = new System.Drawing.Size(206, 650);
             this.leftpanel.TabIndex = 17;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button1.CustomBorderThickness = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.guna2Button1.CustomImages.CheckedImage = ((System.Drawing.Image)(resources.GetObject("guna2Button1.CustomImages.CheckedImage")));
+            this.guna2Button1.CustomImages.HoveredImage = ((System.Drawing.Image)(resources.GetObject("guna2Button1.CustomImages.HoveredImage")));
+            this.guna2Button1.CustomImages.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.CustomImages.Image")));
+            this.guna2Button1.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(183)))));
+            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
+            this.guna2Button1.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(0, 310);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button1.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(155)))), ((int)(((byte)(231)))));
+            this.guna2Button1.ShadowDecoration.Enabled = true;
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.guna2Button1.Size = new System.Drawing.Size(206, 45);
+            this.guna2Button1.TabIndex = 26;
+            this.guna2Button1.Text = "Change Logs";
+            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.TextOffset = new System.Drawing.Point(35, 0);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Komoda", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(0, 263);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(206, 47);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Settings";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Komoda", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 515);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(206, 41);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Download";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // downloadpanel
+            // 
+            this.downloadpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.downloadpanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.downloadpanel.Location = new System.Drawing.Point(0, 556);
+            this.downloadpanel.Name = "downloadpanel";
+            this.downloadpanel.Size = new System.Drawing.Size(206, 94);
+            this.downloadpanel.TabIndex = 24;
             // 
             // guna2Button11
             // 
@@ -171,6 +248,7 @@
             this.guna2Button11.Name = "guna2Button11";
             this.guna2Button11.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2Button11.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(155)))), ((int)(((byte)(231)))));
+            this.guna2Button11.ShadowDecoration.Enabled = true;
             this.guna2Button11.ShadowDecoration.Parent = this.guna2Button11;
             this.guna2Button11.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.guna2Button11.Size = new System.Drawing.Size(206, 45);
@@ -178,6 +256,7 @@
             this.guna2Button11.Text = "History";
             this.guna2Button11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button11.TextOffset = new System.Drawing.Point(35, 0);
+            this.guna2Button11.Click += new System.EventHandler(this.guna2Button11_Click);
             // 
             // guna2Button10
             // 
@@ -294,6 +373,10 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button10;
         private Guna.UI2.WinForms.Guna2Button guna2Button9;
         private System.Windows.Forms.Panel mainpanel;
+        private System.Windows.Forms.Panel downloadpanel;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

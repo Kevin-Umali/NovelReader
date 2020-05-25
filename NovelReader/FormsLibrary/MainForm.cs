@@ -1,13 +1,8 @@
-﻿using NovelReaderWebScrapper.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NovelReader
+namespace NovelReader.FormsLibrary
 {
     public partial class MainForm : Form
     {
@@ -45,6 +40,43 @@ namespace NovelReader
         private void guna2Button10_Click(object sender, EventArgs e)
         {
             DisposeandAdd(new UserControlLibrary.FavoriteNovelsUC());
+        }
+
+        private void guna2Button11_Click(object sender, EventArgs e)
+        {
+            DisposeandAdd(new UserControlLibrary.HistoryUC());
+        }
+
+        public void LoadDownload(UserControl uc)
+        {
+            downloadpanel.Controls.Clear();
+            foreach (UserControl aa in downloadpanel.Controls)
+            {
+                aa.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+
+            downloadpanel.Controls.Add(uc);
+            uc.Dock = DockStyle.Fill;
+        }
+
+        public bool CheckDownload()
+        {
+            if (downloadpanel.Controls.Count < 1)
+                return true;
+            else
+                return false;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<ChangeLogsForm>().Count() == 0)
+            {
+                ChangeLogsForm frm = new ChangeLogsForm();
+                frm.Show();
+            }
         }
     }
 }

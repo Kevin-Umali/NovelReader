@@ -1,13 +1,10 @@
 ﻿using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
+using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace NovelReader.Classes
@@ -63,24 +60,109 @@ namespace NovelReader.Classes
                         NovelName = (string)(favorite["NovelName"]),
                         NovelLink = (string)(favorite["NovelLink"]),
                         Img = (string)(favorite["Img"]),
-                        Source = (string)(favorite["Source"]),
+                        Source = (string)(favorite["Source"])
                     }
                 ).ToList();
 
             return favoriteNovels;
         }
+        public static List<HistoryModel> LoadHistoryData()
+        {
+            //List<(string ID, string NovelName, string NovelLink, string ImgLink, int sourcesite)> Data 
+            //    = new List<(string ID, string NovelName, string NovelLink, string ImgLink, int sourcesite)>();
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
+                {
+                    sqlcon.Open();
+                    string query = $"Select * from NovelHistory";
+                    using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
+                    {
+                        using (SQLiteDataReader dr = sqlcmd.ExecuteReader())
+                        {
+                            try
+                            {
+                                dt.Load(dr);
+                            }
+                            finally
+                            {
+                                if (sqlcon.State == ConnectionState.Open)
+                                {
+                                    dr.Close();
+                                    sqlcon.Close();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-        private static bool CheckNovelFavorites(string novel)
+            List<HistoryModel> historyDatas = dt.AsEnumerable().Select(
+                    favorite => new HistoryModel
+                    {
+                        NovelName = (string)(favorite["NovelName"]),
+                        PreviousChapterLink = (string)(favorite["PreviousChapterLink"]),
+                        Source = Convert.ToInt32(favorite["Source"])
+                    }
+                ).ToList();
+
+            return historyDatas;
+        }
+
+        public static bool RemoveHistory(string novelname, int source)
         {
             try
             {
                 using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
                 {
                     sqlcon.Open();
-                    string query = "SELECT NovelName from NovelFavorites where NovelName=@NovelName";
+                    string query = "DELETE FROM NovelHistory WHERE NovelName=@NovelName AND Source=@Source";
                     using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
                     {
-                                                        sqlcmd.Parameters.AddWithValue("@NovelName", novel);
+                        try
+                        {
+                            sqlcmd.Parameters.AddWithValue("@NovelName", novelname);
+                            sqlcmd.Parameters.AddWithValue("@Source", source);
+                            sqlcmd.ExecuteNonQuery();
+
+                            if (sqlcon.State == ConnectionState.Open)
+                            {
+                                sqlcon.Close();
+                                return true;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            return false;
+        }
+        public static bool CheckNovelFavorites(string novel, int source)
+        {
+            try
+            {
+                using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
+                {
+                    sqlcon.Open();
+                    string query = "SELECT NovelName from NovelFavorites where NovelName=@NovelName and Source=@Source";
+                    using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@NovelName", novel);
+                        sqlcmd.Parameters.AddWithValue("@Source", source);
                         using (SQLiteDataReader dr = sqlcmd.ExecuteReader())
                         {
                             try
@@ -92,7 +174,7 @@ namespace NovelReader.Classes
                                         if (sqlcon.State == ConnectionState.Open)
                                         {
                                             sqlcon.Close();
-                                            return false;
+                                            return true;
                                         }
                                     }
                                 }
@@ -101,11 +183,11 @@ namespace NovelReader.Classes
                                     if (sqlcon.State == ConnectionState.Open)
                                     {
                                         sqlcon.Close();
-                                        return true;
+                                        return false;
                                     }
                                 }
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
                                 return false;
@@ -122,9 +204,9 @@ namespace NovelReader.Classes
             return false;
         }
 
-        public static bool SaveNovelFavorites(string novelname, string novellink, string imglink, int sourcesite)
+        public static bool SaveAndUnsaveNovelFavorites(string novelname, string novellink, string imglink, int sourcesite)
         {
-            if(CheckNovelFavorites(novelname))
+            if (!CheckNovelFavorites(novelname, sourcesite))
             {
                 try
                 {
@@ -165,23 +247,44 @@ namespace NovelReader.Classes
             }
             else
             {
-                return false;
+                try
+                {
+                    using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
+                    {
+                        sqlcon.Open();
+                        string query = "DELETE FROM NovelFavorites WHERE NovelName=@NovelName AND Source=@Source";
+                        using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
+                        {
+                            try
+                            {
+                                sqlcmd.Parameters.AddWithValue("@NovelName", novelname);
+                                sqlcmd.Parameters.AddWithValue("@Source", sourcesite);
+                                sqlcmd.ExecuteNonQuery();
+
+                                if (sqlcon.State == ConnectionState.Open)
+                                {
+                                    sqlcon.Close();
+                                    return true;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return false;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
             }
             return false;
         }
 
-
-
-
-
-
-
-
-
-
-
-        
-        public static (int sourcesite, string chapterlink) ContinueReading(string novel)
+        public static (int sourcesite, string chapterlink) ContinueReading(string novel, int source)
         {
             string chapterlink = string.Empty;
             int sourcesite = 0;
@@ -190,10 +293,11 @@ namespace NovelReader.Classes
                 using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
                 {
                     sqlcon.Open();
-                    string query = "SELECT PreviousChapterLink, Source from NovelHistory where NovelName=@NovelName";
+                    string query = "SELECT PreviousChapterLink, Source from NovelHistory where NovelName=@NovelName AND Source=@Source";
                     using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@NovelName", novel);
+                        sqlcmd.Parameters.AddWithValue("@Source", source);
                         using (SQLiteDataReader dr = sqlcmd.ExecuteReader())
                         {
                             try
@@ -224,17 +328,18 @@ namespace NovelReader.Classes
             }
             return (sourcesite, chapterlink);
         }
-        private static bool CheckNovelHistory(string novel)
+        private static bool CheckNovelHistory(string novel, int source)
         {
             try
             {
                 using (SQLiteConnection sqlcon = new SQLiteConnection(LoadConnectionString(), true))
                 {
                     sqlcon.Open();
-                    string query = "SELECT NovelName from NovelHistory where NovelName=@NovelName";
+                    string query = "SELECT NovelName from NovelHistory where NovelName=@NovelName and Source=@Source";
                     using (SQLiteCommand sqlcmd = new SQLiteCommand(query, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@NovelName", novel);
+                        sqlcmd.Parameters.AddWithValue("@Source", source);
                         using (SQLiteDataReader dr = sqlcmd.ExecuteReader())
                         {
                             try
@@ -277,7 +382,7 @@ namespace NovelReader.Classes
         }
         public static void UpdatePreviousChapter(string title, string chapterlink, int sourcesite)
         {
-            if(CheckNovelHistory(title))
+            if (CheckNovelHistory(title, sourcesite))
             {
                 try
                 {
@@ -324,7 +429,7 @@ namespace NovelReader.Classes
                                 sqlcmd.Parameters.AddWithValue("@PreviousChapterLink", chapterlink);
                                 sqlcmd.Parameters.AddWithValue("@Source", sourcesite);
                                 sqlcmd.ExecuteNonQuery();
-                                
+
                             }
                             finally
                             {

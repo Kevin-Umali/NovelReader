@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NovelReader.FormsLibrary;
+using System;
 using System.Windows.Forms;
 
 namespace NovelReader.UserControlLibrary.Cards
@@ -6,7 +7,7 @@ namespace NovelReader.UserControlLibrary.Cards
     public partial class NovelCard : UserControl
     {
         public string _title = string.Empty,
-            _latestchapter = string.Empty, _link = string.Empty, 
+            _latestchapter = string.Empty, _link = string.Empty,
             _imglink = string.Empty, _rating = string.Empty;
 
         int _sourcesite;

@@ -1,11 +1,11 @@
 ﻿using NovelReader.Classes;
+using NovelReader.UserControlLibrary.Cards;
 using NovelReaderWebScrapper.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-namespace NovelReader
+namespace NovelReader.FormsLibrary
 {
     public partial class NovelInformationForm : Form
     {
@@ -26,6 +26,8 @@ namespace NovelReader
         {
             label1.Text = (_sourcesite == 0) ? "Novel Reader >> Novel Information >> BoxNovel"
                 : (_sourcesite == 1) ? "Novel Reader >> Novel Information >> WuxiaWorld.Site" : "Novel Reader >> Novel Information >> BoxNovel";
+
+            guna2Button1.Checked = DatabaseAccess.CheckNovelFavorites(_title, _sourcesite) ? true : false;
 
             lbltitle.Text = _title;
             lblrating.Text = $"{_rating}";
@@ -105,8 +107,6 @@ namespace NovelReader
         }
         private void chapterdatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
             if (chapterdatagridview.Rows.Count >= 1)
             {
 
@@ -140,12 +140,15 @@ namespace NovelReader
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(DatabaseAccess.SaveNovelFavorites(_title, _link, _imglink, _sourcesite) ? "Successfully added to your favorite list" : "Already exist on your favorite list");
+            if (DatabaseAccess.SaveAndUnsaveNovelFavorites(_title, _link, _imglink, _sourcesite))
+            {
+                guna2Button1.Checked = DatabaseAccess.CheckNovelFavorites(_title, _sourcesite) ? true : false;
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            var data = DatabaseAccess.ContinueReading(_title);
+            var data = DatabaseAccess.ContinueReading(_title, _sourcesite);
             if (!string.IsNullOrEmpty(data.chapterlink))
             {
                 foreach (Control ctrl in this.Controls)
@@ -164,35 +167,18 @@ namespace NovelReader
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            DownloadForm f1 = new DownloadForm(_sourcesite);
-            f1.SendDownloadData(PrepareNovelChapterData(_link), _title);
-            f1.ShowDialog();
-            f1.Dispose();
+            MainForm f2 = (MainForm)Application.OpenForms["MainForm"];
+
+            if (f2.CheckDownload())
+                f2.LoadDownload(new DownloadCard(_sourcesite, PrepareNovelChapterData(_link), _title));
+            else
+                MessageBox.Show("Wait until the recent download is finished");
+            
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
         }
 
-        //private bool DisposeControl()
-        //{
-        //    chapterdatagridview.Dispose();
-        //    guna2ShadowPanel1.Dispose();
-        //    foreach (Control controls in this.Controls)
-        //    {
-        //        controls.Dispose();
-        //        GC.Collect();
-        //        GC.WaitForPendingFinalizers();
-        //        GC.Collect();
-        //    }
-        //    return true;
-        //}
-        //private void gunaControlBox1_Click(object sender, EventArgs e)
-        //{
-        //    if (DisposeControl())
-        //    {
-        //        this.Dispose();
-        //    }
-        //}
         ~NovelInformationForm()
         {
             GC.Collect();

@@ -1,41 +1,37 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using NovelReader.Classes;
-using NovelReaderWebScrapper.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using NovelReader.Classes;
 
-namespace NovelReader
+namespace NovelReader.UserControlLibrary.Cards
 {
-    public partial class DownloadForm : Form
+    public partial class DownloadCard : UserControl
     {
         private List<NovelReaderWebScrapper.Model.NovelChapterModel> novelChapters = new List<NovelReaderWebScrapper.Model.NovelChapterModel>();
         private string _title = string.Empty;
         int PercentageComplete = 0;
         int sourcesite;
-        public DownloadForm(int _sourcesite)
+        public DownloadCard(int _sourcesite, List<NovelReaderWebScrapper.Model.NovelChapterModel> novelChapterModels, string title)
         {
-            InitializeComponent();
+            InitializeComponent(); 
             sourcesite = _sourcesite;
-        }
-        public void SendDownloadData(List<NovelReaderWebScrapper.Model.NovelChapterModel> novelChapterModels, string title)
-        {
             _title = title;
             novelChapters = novelChapterModels;
         }
-        private void DownloadForm_Load(object sender, EventArgs e)
+        private void DownloadCard_Load(object sender, EventArgs e)
         {
-            guna2CircleProgressBar1.Maximum = novelChapters.Count;
+            guna2ProgressBar1.Maximum = novelChapters.Count;
             timer1.Start();
-            var documentpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) 
+            var documentpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 + $@"\{string.Join("", _title.Split('\\', '/', ':', '*', '?', '"', '<', '>', '|'))}";
 
             if (!Directory.Exists(documentpath))
@@ -71,7 +67,7 @@ namespace NovelReader
             Document myDocument = new Document(PageSize.A4);
             var documentpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 + $@"\{string.Join("", _title.Split('\\', '/', ':', '*', '?', '"', '<', '>', '|'))}";
-            string pdf = Path.Combine(documentpath, $"{string.Join("", name.Split('\\','/',':','*','?','"','<','>','|'))}.pdf");
+            string pdf = Path.Combine(documentpath, $"{string.Join("", name.Split('\\', '/', ':', '*', '?', '"', '<', '>', '|'))}.pdf");
             try
             {
                 if (!File.Exists(pdf))
@@ -102,16 +98,16 @@ namespace NovelReader
 
         void UpdateProgress()
         {
-            if (this.guna2CircleProgressBar1.InvokeRequired || this.label1.InvokeRequired)
+            if (this.guna2ProgressBar1.InvokeRequired || this.label1.InvokeRequired)
             {
-                this.guna2CircleProgressBar1.Invoke(new MethodInvoker(delegate ()
+                this.guna2ProgressBar1.Invoke(new MethodInvoker(delegate ()
                 {
-                    guna2CircleProgressBar1.Value = PercentageComplete++;
+                    guna2ProgressBar1.Value = PercentageComplete++;
                 }));
 
                 this.label1.Invoke(new MethodInvoker(delegate ()
                 {
-                    label1.Text = $"{PercentageComplete.ToString()}/{guna2CircleProgressBar1.Maximum.ToString()}";
+                    label1.Text = $"{_title}";
                 }));
             }
         }
@@ -121,14 +117,22 @@ namespace NovelReader
             var documentpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 + $@"\{string.Join("", _title.Split('\\', '/', ':', '*', '?', '"', '<', '>', '|'))}";
             await DownloadChapterAsync();
-            MessageBox.Show($"Download Complete {Environment.NewLine} File(s) saved to {documentpath}");
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
             this.Dispose();
         }
 
-        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        ~DownloadCard()
         {
-            guna2CircleProgressBar1.Dispose();
             GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

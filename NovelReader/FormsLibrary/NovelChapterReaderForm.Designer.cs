@@ -1,4 +1,4 @@
-﻿namespace NovelReader
+﻿namespace NovelReader.FormsLibrary
 {
     partial class NovelChapterReaderForm
     {

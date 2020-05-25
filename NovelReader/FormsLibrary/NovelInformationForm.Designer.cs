@@ -1,4 +1,4 @@
-﻿namespace NovelReader
+﻿namespace NovelReader.FormsLibrary
 {
     partial class NovelInformationForm
     {
@@ -188,7 +188,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.label1.Font = new System.Drawing.Font("Komoda", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(56, 5);
+            this.label1.Location = new System.Drawing.Point(56, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(199, 33);
             this.label1.TabIndex = 14;
@@ -391,10 +391,13 @@
             this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(207)))), ((int)(((byte)(207)))));
             this.guna2Button1.BorderRadius = 21;
             this.guna2Button1.BorderThickness = 2;
+            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(207)))), ((int)(((byte)(207)))));
+            this.guna2Button1.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.CheckedState.Image")));
             this.guna2Button1.CheckedState.Parent = this.guna2Button1;
             this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(207)))), ((int)(((byte)(207)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.White;

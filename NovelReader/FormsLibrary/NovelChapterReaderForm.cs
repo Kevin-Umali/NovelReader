@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NovelReader
+namespace NovelReader.FormsLibrary
 {
     public partial class NovelChapterReaderForm : Form
     {

@@ -1,15 +1,10 @@
-﻿using System;
+﻿using NovelReader.Classes;
+using NovelReaderWebScrapper.Model;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NovelReader.Classes;
-using NovelReaderWebScrapper.Model;
-using Org.BouncyCastle.Asn1.Cms;
 
 namespace NovelReader.UserControlLibrary
 {
