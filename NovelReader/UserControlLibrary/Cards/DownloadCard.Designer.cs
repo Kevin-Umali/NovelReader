@@ -33,6 +33,7 @@
             this.guna2ProgressBar1 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -40,9 +41,9 @@
             this.label1.AutoEllipsis = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
-            this.label1.Location = new System.Drawing.Point(3, 36);
+            this.label1.Location = new System.Drawing.Point(3, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 37);
+            this.label1.Size = new System.Drawing.Size(160, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Starting...";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,7 +54,7 @@
             this.guna2ProgressBar1.Font = new System.Drawing.Font("Segoe UI", 10.25F);
             this.guna2ProgressBar1.ForeColor = System.Drawing.Color.White;
             this.guna2ProgressBar1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.guna2ProgressBar1.Location = new System.Drawing.Point(3, 9);
+            this.guna2ProgressBar1.Location = new System.Drawing.Point(6, 40);
             this.guna2ProgressBar1.Name = "guna2ProgressBar1";
             this.guna2ProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
             this.guna2ProgressBar1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
@@ -62,7 +63,7 @@
             this.guna2ProgressBar1.ShadowDecoration.Parent = this.guna2ProgressBar1;
             this.guna2ProgressBar1.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
             this.guna2ProgressBar1.ShowPercentage = true;
-            this.guna2ProgressBar1.Size = new System.Drawing.Size(200, 24);
+            this.guna2ProgressBar1.Size = new System.Drawing.Size(197, 24);
             this.guna2ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.guna2ProgressBar1.TabIndex = 6;
             this.guna2ProgressBar1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -85,11 +86,24 @@
             this.label2.Text = "STOP";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoEllipsis = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
+            this.label3.Location = new System.Drawing.Point(6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(197, 37);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "{Title}";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // DownloadCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2ProgressBar1);
@@ -108,5 +122,6 @@
         private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

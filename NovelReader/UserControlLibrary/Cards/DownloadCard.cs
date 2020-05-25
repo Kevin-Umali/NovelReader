@@ -25,6 +25,7 @@ namespace NovelReader.UserControlLibrary.Cards
             InitializeComponent(); 
             sourcesite = _sourcesite;
             _title = title;
+            label3.Text = _title;
             novelChapters = novelChapterModels;
         }
         private void DownloadCard_Load(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace NovelReader.UserControlLibrary.Cards
                 else
                 {
                     myDocument.Close();
-                    UpdateProgress();
+                    UpdateProgress(name);
                     return;
                 }
             }
@@ -93,10 +94,10 @@ namespace NovelReader.UserControlLibrary.Cards
             }
             myDocument.Close();
             GC.Collect();
-            UpdateProgress();
+            UpdateProgress(name);
         }
 
-        void UpdateProgress()
+        void UpdateProgress(string name)
         {
             if (this.guna2ProgressBar1.InvokeRequired || this.label1.InvokeRequired)
             {
@@ -107,7 +108,7 @@ namespace NovelReader.UserControlLibrary.Cards
 
                 this.label1.Invoke(new MethodInvoker(delegate ()
                 {
-                    label1.Text = $"{_title}";
+                    label1.Text = $"{name}";
                 }));
             }
         }
