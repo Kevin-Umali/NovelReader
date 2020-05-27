@@ -4,12 +4,12 @@ namespace NovelReaderWebScrapper.Model
 {
     public class NovelSummaryModel
     {
-        public string Author { get; set; }
-        public string Artist { get; set; }
-        public string Genre { get; set; }
-        public string Release { get; set; }
+        public string Author { get; set; } = "Unknown";
+        public string Artist { get; set; } = "Unknown";
+        public string Genre { get; set; } = "Unknown";
+        public string Release { get; set; } = "Unknown";
         public string ImgLink { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = "Unknown";
 
         public NovelSummaryModel(string _Author, string _Artist,
             string _Genre, string _Release, string _ImgLink, string _Status)

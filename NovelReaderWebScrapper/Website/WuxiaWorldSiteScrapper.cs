@@ -9,9 +9,9 @@ namespace NovelReaderWebScrapper.Website
 {
     public class WuxiaWorldSiteScrapper
     {
-        public static SiteLinkModel GetPreviosNextLinkAndResult(string url)
+        public static SiteLinkModel GetPreviosAndNextLink(string url)
         {
-            string previous = string.Empty, next = string.Empty, result = string.Empty;
+            string previous = string.Empty, next = string.Empty;
             try
             {
                 HtmlWeb htmlWeb = new HtmlWeb();
@@ -20,7 +20,6 @@ namespace NovelReaderWebScrapper.Website
 
                 doc.OptionEmptyCollection = true;
 
-                result = doc.DocumentNode.SelectSingleNode("//div[@class='c-blog__heading style-2 font-heading']/h4")?.InnerText?.Trim()?.ToUpper();
                 HtmlNode[] node = doc.DocumentNode.SelectNodes("//div[@class='nav-links']").ToArray();
                 foreach (HtmlNode item in node)
                 {
@@ -32,7 +31,7 @@ namespace NovelReaderWebScrapper.Website
             {
                 Console.WriteLine(ex.Message);
             }
-            return new SiteLinkModel(previous, next, result);
+            return new SiteLinkModel(previous, next);
         }
 
         public static List<NovelDataModel> GetWuxiaWorldSiteData(string url, bool isSearch)
@@ -177,7 +176,7 @@ namespace NovelReaderWebScrapper.Website
                 status.Contains("OnGoing") ? "OnGoing" : "Completed");
         }
 
-        public static NovelSypnosisModel GetWuxiaWorldSypnosis(string url)
+        public static NovelSypnosisModel GetWuxiaWorldSiteSypnosis(string url)
         {
             string sypnosis = string.Empty;
             try
@@ -273,6 +272,13 @@ namespace NovelReaderWebScrapper.Website
             }
 
             return new ChapterTextModel(previouschapter, nextchapter, text);
+        }
+
+        ~WuxiaWorldSiteScrapper()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace NovelReader.UserControlLibrary
+﻿using System.Runtime.CompilerServices;
+
+namespace NovelReader.UserControlLibrary
 {
     partial class BrowseNovelUC
     {
@@ -34,7 +36,6 @@
             this.rdoBoxnovel = new Guna.UI2.WinForms.Guna2RadioButton();
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblresult = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
@@ -46,6 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.panel1.SuspendLayout();
             this.noItempanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -169,17 +171,7 @@
             this.txtSearch.Size = new System.Drawing.Size(595, 44);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // lblresult
-            // 
-            this.lblresult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblresult.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblresult.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblresult.Location = new System.Drawing.Point(613, 60);
-            this.lblresult.Name = "lblresult";
-            this.lblresult.Size = new System.Drawing.Size(150, 25);
-            this.lblresult.TabIndex = 13;
-            this.lblresult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // flowLayoutPanel1
             // 
@@ -347,15 +339,41 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // guna2RadioButton1
+            // 
+            this.guna2RadioButton1.AutoSize = true;
+            this.guna2RadioButton1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton1.CheckedState.BorderThickness = 0;
+            this.guna2RadioButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton1.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2RadioButton1.CheckedState.InnerOffset = -4;
+            this.guna2RadioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2RadioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.guna2RadioButton1.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.guna2RadioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2RadioButton1.Location = new System.Drawing.Point(220, 64);
+            this.guna2RadioButton1.Name = "guna2RadioButton1";
+            this.guna2RadioButton1.Size = new System.Drawing.Size(88, 21);
+            this.guna2RadioButton1.TabIndex = 25;
+            this.guna2RadioButton1.Tag = "2";
+            this.guna2RadioButton1.Text = "RoyalRoad";
+            this.guna2RadioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.guna2RadioButton1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2RadioButton1.UncheckedState.BorderThickness = 2;
+            this.guna2RadioButton1.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton1.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton1.UseVisualStyleBackColor = true;
+            this.guna2RadioButton1.CheckedChanged += new System.EventHandler(this.rdoWuxiaWorldSite_CheckedChanged);
+            // 
             // BrowseNovelUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.Controls.Add(this.guna2RadioButton1);
             this.Controls.Add(this.gunaVScrollBar1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.rdoWuxiaWorldSite);
-            this.Controls.Add(this.lblresult);
             this.Controls.Add(this.rdoBoxnovel);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
@@ -375,12 +393,10 @@
         }
 
         #endregion
-
         private Guna.UI2.WinForms.Guna2RadioButton rdoWuxiaWorldSite;
         private Guna.UI2.WinForms.Guna2RadioButton rdoBoxnovel;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private System.Windows.Forms.Label lblresult;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnPrev;
@@ -392,5 +408,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2RadioButton guna2RadioButton1;
     }
 }

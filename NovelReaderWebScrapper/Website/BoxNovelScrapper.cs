@@ -10,9 +10,9 @@ namespace NovelReaderWebScrapper.Website
     public class BoxNovelScrapper
     {
         // Changing List<Tuple<...,...>> to List<DataConstructor> better structure with element naming convention.
-        public static SiteLinkModel GetPreviosNextLinkAndResult(string url)
+        public static SiteLinkModel GetPreviosAndNextLink(string url)
         {
-            string previous = string.Empty, next = string.Empty, result = string.Empty;
+            string previous = string.Empty, next = string.Empty;
             try
             {
                 HtmlWeb htmlWeb = new HtmlWeb();
@@ -21,7 +21,6 @@ namespace NovelReaderWebScrapper.Website
 
                 doc.OptionEmptyCollection = true;
 
-                result = doc.DocumentNode.SelectSingleNode("//div[@class='c-blog__heading style-2 font-heading']/h4")?.InnerText?.Trim()?.ToUpper();
                 HtmlNode[] node = doc.DocumentNode.SelectNodes("//div[@class='nav-links']").ToArray();
                 foreach (HtmlNode item in node)
                 {
@@ -33,7 +32,7 @@ namespace NovelReaderWebScrapper.Website
             {
                 Console.WriteLine(ex.Message);
             }
-            return new SiteLinkModel(previous, next, result);
+            return new SiteLinkModel(previous, next);
         }
         public static List<NovelDataModel> GetBoxNovelData(string url, bool isSearch)
         {

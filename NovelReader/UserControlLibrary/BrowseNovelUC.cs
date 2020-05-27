@@ -32,7 +32,7 @@ namespace NovelReader.UserControlLibrary
                 if (!string.IsNullOrEmpty(nextlink))
                 {
                     await LoadNovelDataToCardAsync
-                        ($"{SourcePickerMethod.GetSourceUrl((SourcePickerMethod.Source)sourcesite)}?s={txtSearch.Text}", true);
+                        ($"{SourcePickerMethod.GetSourceUrl((SourcePickerMethod.Source)sourcesite, txtSearch.Text)}", true);
                 }
                 else
                 {
@@ -52,6 +52,7 @@ namespace NovelReader.UserControlLibrary
         }
         private void rdoWuxiaWorldSite_CheckedChanged(object sender, EventArgs e)
         {
+            txtSearch.ResetText();
             Guna.UI2.WinForms.Guna2RadioButton rdo = (Guna.UI2.WinForms.Guna2RadioButton)sender;
             ChangeSource(Convert.ToInt32(rdo.Tag.ToString()));
         }
@@ -82,7 +83,6 @@ namespace NovelReader.UserControlLibrary
             SiteLinkModel siteLink = PrepareSiteLinkData($"{url}");
             nextlink = siteLink.NextLink;
             previouslink = siteLink.PreviousLink;
-            lblresult.Text = $"{siteLink.Result}";
 
             btnNext.Enabled = (string.IsNullOrEmpty(nextlink) ? false : true);
             btnPrev.Enabled = (string.IsNullOrEmpty(previouslink) ? false : true);
@@ -181,6 +181,15 @@ namespace NovelReader.UserControlLibrary
                 }
             }
         }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSearch_Click(sender, e);
+            }
+        }
+
         ~BrowseNovelUC()
         {
             GC.Collect();

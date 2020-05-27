@@ -48,20 +48,21 @@ namespace NovelReader.FormsLibrary
                 guna2ComboBox1.Items.Add(f);
 
             await LoadChapterData(_link);
-            btnNext.Enabled = (string.IsNullOrEmpty(nextchapterlink) ? false : true);
-            btnPrev.Enabled = (string.IsNullOrEmpty(previouschapterlink) ? false : true);
-
         }
 
         private async Task LoadChapterData(string url)
         {
             _link = url;
+
             NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = PrepareChapterTextData($"{url}");
 
             await Task.Run(() => LoadChapterTextData(chapterdata.ChapterText,
                 chapterdata.PreviousChapterLink, chapterdata.NextChapterLink));
 
             await Task.Run(() => DatabaseAccess.UpdatePreviousChapter(_title, _link, _sourcesite));
+
+            btnNext.Enabled = (string.IsNullOrEmpty(nextchapterlink) ? false : true);
+            btnPrev.Enabled = (string.IsNullOrEmpty(previouschapterlink) ? false : true);
         }
 
         private void LoadChapterTextData(string chaptertext, string _previouschapterlink, string _nextchapterlink)

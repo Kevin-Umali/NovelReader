@@ -115,7 +115,7 @@
             this.lblauthor.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblauthor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblauthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
-            this.lblauthor.Location = new System.Drawing.Point(410, 110);
+            this.lblauthor.Location = new System.Drawing.Point(433, 111);
             this.lblauthor.Name = "lblauthor";
             this.lblauthor.Size = new System.Drawing.Size(67, 19);
             this.lblauthor.TabIndex = 12;
@@ -425,7 +425,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(383, 111);
+            this.pictureBox3.Location = new System.Drawing.Point(406, 112);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 19);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

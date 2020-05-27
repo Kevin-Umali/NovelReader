@@ -198,7 +198,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(206, 47);
             this.label3.TabIndex = 27;
-            this.label3.Text = "Settings";
+            this.label3.Text = "Tools";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1

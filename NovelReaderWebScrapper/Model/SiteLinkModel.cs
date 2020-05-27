@@ -6,12 +6,10 @@ namespace NovelReaderWebScrapper.Model
     {
         public string PreviousLink { get; set; }
         public string NextLink { get; set; }
-        public string Result { get; set; }
-        public SiteLinkModel(string _PreviousLink, string _NextLink, string _Result)
+        public SiteLinkModel(string _PreviousLink, string _NextLink)
         {
             PreviousLink = _PreviousLink;
             NextLink = _NextLink;
-            Result = _Result;
         }
         ~SiteLinkModel()
         {
