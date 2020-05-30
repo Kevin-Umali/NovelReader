@@ -38,6 +38,7 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftpanel = new System.Windows.Forms.Panel();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -139,6 +140,7 @@
             // leftpanel
             // 
             this.leftpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.leftpanel.Controls.Add(this.guna2Button2);
             this.leftpanel.Controls.Add(this.guna2Button1);
             this.leftpanel.Controls.Add(this.label3);
             this.leftpanel.Controls.Add(this.label1);
@@ -153,6 +155,39 @@
             this.leftpanel.Name = "leftpanel";
             this.leftpanel.Size = new System.Drawing.Size(206, 650);
             this.leftpanel.TabIndex = 17;
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.guna2Button2.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
+            this.guna2Button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button2.CustomBorderThickness = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.guna2Button2.CustomImages.CheckedImage = ((System.Drawing.Image)(resources.GetObject("guna2Button2.CustomImages.CheckedImage")));
+            this.guna2Button2.CustomImages.HoveredImage = ((System.Drawing.Image)(resources.GetObject("guna2Button2.CustomImages.HoveredImage")));
+            this.guna2Button2.CustomImages.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.CustomImages.Image")));
+            this.guna2Button2.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
+            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(183)))));
+            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
+            this.guna2Button2.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2Button2.HoverState.Parent = this.guna2Button2;
+            this.guna2Button2.Location = new System.Drawing.Point(0, 355);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button2.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(155)))), ((int)(((byte)(231)))));
+            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
+            this.guna2Button2.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.guna2Button2.Size = new System.Drawing.Size(206, 45);
+            this.guna2Button2.TabIndex = 28;
+            this.guna2Button2.Text = "About";
+            this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button2.TextOffset = new System.Drawing.Point(35, 0);
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
             // 
@@ -377,6 +412,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }
 

@@ -53,7 +53,7 @@ namespace NovelReader.FormsLibrary
         private async Task LoadChapterData(string url)
         {
             _link = url;
-
+            linkLabel1.Text = _link;
             NovelReaderWebScrapper.Model.ChapterTextModel chapterdata = PrepareChapterTextData($"{url}");
 
             await Task.Run(() => LoadChapterTextData(chapterdata.ChapterText,
@@ -185,6 +185,11 @@ namespace NovelReader.FormsLibrary
             Cursor.Current = Cursors.WaitCursor;
             await LoadChapterData(_link);
             Cursor.Current = Cursors.Default;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenURL.OpenUrl(linkLabel1.Text);
         }
 
         private void btnRead_Click(object sender, EventArgs e)

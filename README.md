@@ -15,7 +15,9 @@ A Light Novel or Web Novel Reader for Windows/Desktop, this app use webscrapping
 Website Source
  - [BoxNovel](https://boxnovel.com/)
  - [Wuxiaworldsite](https://Wuxiaworld.site/)
- - Adding more source on the feature.
+ - [RoyalRoad](https://www.royalroad.com/home)
+ - [NovelCrush](https://novelcrush.com/)
+ - [NovelFull](https://novelfull.com/)
 
 ## Interface
 <p align="center">
@@ -29,13 +31,16 @@ Website Source
 </p>
 
 ## Features
-I'm still working on needed features such as favorite, recent/history, download etc
 
  - Search with ordery by filter
  - Displaying novel information
  - Changing font size and font
  - Text alignment
  - Text-to-speech
+ - Download to PDF
+ - Add to favorites
+ - History/Recent novels
+ 
  
  ## Built With
 

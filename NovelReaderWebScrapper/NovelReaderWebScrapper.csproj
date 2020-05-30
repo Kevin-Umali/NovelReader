@@ -58,6 +58,8 @@
     <Compile Include="Model\SiteLinkModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Website\BoxNovelScrapper.cs" />
+    <Compile Include="Website\NovelCrushScrapper.cs" />
+    <Compile Include="Website\NovelFullScrapper.cs" />
     <Compile Include="Website\RoyalRoadScrapper.cs" />
     <Compile Include="Website\WuxiaWorldSiteScrapper.cs" />
   </ItemGroup>

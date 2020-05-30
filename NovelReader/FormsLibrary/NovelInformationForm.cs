@@ -25,8 +25,10 @@ namespace NovelReader.FormsLibrary
         private void NovelInformationForm_Load(object sender, EventArgs e)
         {
             label1.Text = (_sourcesite == 0) ? "Novel Reader >> Novel Information >> BoxNovel"
-                : (_sourcesite == 1) ? "Novel Reader >> Novel Information >> WuxiaWorld.Site" 
-                : (_sourcesite == 2) ? "Novel Reader >> Novel Information >> WuxiaWorldOnline" 
+                : (_sourcesite == 1) ? "Novel Reader >> Novel Information >> WuxiaWorld.Site"
+                : (_sourcesite == 2) ? "Novel Reader >> Novel Information >> RoyalRoad"
+                : (_sourcesite == 3) ? "Novel Reader >> Novel Information >> NovelCrush"
+                : (_sourcesite == 4) ? "Novel Reader >> Novel Information >> NovelFull"
                 : "Novel Reader >> Novel Information >> BoxNovel";
 
             guna2Button1.Checked = DatabaseAccess.CheckNovelFavorites(_title, _sourcesite) ? true : false;

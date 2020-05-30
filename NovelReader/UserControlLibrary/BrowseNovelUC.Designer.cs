@@ -48,6 +48,8 @@ namespace NovelReader.UserControlLibrary
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.guna2RadioButton2 = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.guna2RadioButton3 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.panel1.SuspendLayout();
             this.noItempanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -93,10 +95,10 @@ namespace NovelReader.UserControlLibrary
             this.rdoBoxnovel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
             this.rdoBoxnovel.Location = new System.Drawing.Point(12, 64);
             this.rdoBoxnovel.Name = "rdoBoxnovel";
-            this.rdoBoxnovel.Size = new System.Drawing.Size(77, 21);
+            this.rdoBoxnovel.Size = new System.Drawing.Size(80, 21);
             this.rdoBoxnovel.TabIndex = 16;
             this.rdoBoxnovel.Tag = "0";
-            this.rdoBoxnovel.Text = "Boxnovel";
+            this.rdoBoxnovel.Text = "BoxNovel";
             this.rdoBoxnovel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoBoxnovel.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.rdoBoxnovel.UncheckedState.BorderThickness = 2;
@@ -365,11 +367,65 @@ namespace NovelReader.UserControlLibrary
             this.guna2RadioButton1.UseVisualStyleBackColor = true;
             this.guna2RadioButton1.CheckedChanged += new System.EventHandler(this.rdoWuxiaWorldSite_CheckedChanged);
             // 
+            // guna2RadioButton2
+            // 
+            this.guna2RadioButton2.AutoSize = true;
+            this.guna2RadioButton2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton2.CheckedState.BorderThickness = 0;
+            this.guna2RadioButton2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton2.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2RadioButton2.CheckedState.InnerOffset = -4;
+            this.guna2RadioButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2RadioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.guna2RadioButton2.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.guna2RadioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2RadioButton2.Location = new System.Drawing.Point(314, 64);
+            this.guna2RadioButton2.Name = "guna2RadioButton2";
+            this.guna2RadioButton2.Size = new System.Drawing.Size(92, 21);
+            this.guna2RadioButton2.TabIndex = 26;
+            this.guna2RadioButton2.Tag = "3";
+            this.guna2RadioButton2.Text = "NovelCrush";
+            this.guna2RadioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.guna2RadioButton2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2RadioButton2.UncheckedState.BorderThickness = 2;
+            this.guna2RadioButton2.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton2.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton2.UseVisualStyleBackColor = true;
+            this.guna2RadioButton2.CheckedChanged += new System.EventHandler(this.rdoWuxiaWorldSite_CheckedChanged);
+            // 
+            // guna2RadioButton3
+            // 
+            this.guna2RadioButton3.AutoSize = true;
+            this.guna2RadioButton3.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton3.CheckedState.BorderThickness = 0;
+            this.guna2RadioButton3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton3.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2RadioButton3.CheckedState.InnerOffset = -4;
+            this.guna2RadioButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2RadioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.guna2RadioButton3.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.guna2RadioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.guna2RadioButton3.Location = new System.Drawing.Point(412, 64);
+            this.guna2RadioButton3.Name = "guna2RadioButton3";
+            this.guna2RadioButton3.Size = new System.Drawing.Size(204, 21);
+            this.guna2RadioButton3.TabIndex = 27;
+            this.guna2RadioButton3.Tag = "4";
+            this.guna2RadioButton3.Text = "NovelFull (Not Recommended)";
+            this.guna2RadioButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.guna2RadioButton3.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2RadioButton3.UncheckedState.BorderThickness = 2;
+            this.guna2RadioButton3.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton3.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton3.UseVisualStyleBackColor = true;
+            this.guna2RadioButton3.CheckedChanged += new System.EventHandler(this.rdoWuxiaWorldSite_CheckedChanged);
+            // 
             // BrowseNovelUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.Controls.Add(this.guna2RadioButton3);
+            this.Controls.Add(this.guna2RadioButton2);
             this.Controls.Add(this.guna2RadioButton1);
             this.Controls.Add(this.gunaVScrollBar1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -409,5 +465,7 @@ namespace NovelReader.UserControlLibrary
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI2.WinForms.Guna2RadioButton guna2RadioButton1;
+        private Guna.UI2.WinForms.Guna2RadioButton guna2RadioButton2;
+        private Guna.UI2.WinForms.Guna2RadioButton guna2RadioButton3;
     }
 }

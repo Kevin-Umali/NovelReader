@@ -78,5 +78,14 @@ namespace NovelReader.FormsLibrary
                 frm.Show();
             }
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<AboutForm>().Count() == 0)
+            {
+                AboutForm frm = new AboutForm();
+                frm.Show();
+            }
+        }
     }
 }

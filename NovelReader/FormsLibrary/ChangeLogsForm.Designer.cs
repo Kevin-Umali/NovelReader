@@ -46,12 +46,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gunaVScrollBar1 = new Guna.UI.WinForms.GunaVScrollBar();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2ShadowPanel1
@@ -147,6 +151,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
@@ -160,7 +165,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
             this.panel1.Controls.Add(this.lblversion);
             this.panel1.Controls.Add(this.lblchange);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(3, 168);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(342, 180);
             this.panel1.TabIndex = 0;
@@ -198,7 +203,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(3, 189);
+            this.panel2.Location = new System.Drawing.Point(3, 354);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(342, 142);
             this.panel2.TabIndex = 1;
@@ -235,7 +240,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(3, 337);
+            this.panel3.Location = new System.Drawing.Point(3, 502);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(342, 64);
             this.panel3.TabIndex = 2;
@@ -285,6 +290,43 @@
             this.gunaVScrollBar1.ThumbPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(194)))), ((int)(((byte)(228)))));
             this.gunaVScrollBar1.ThumbSize = 100;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(83)))), ((int)(((byte)(101)))));
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(342, 159);
+            this.panel4.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoEllipsis = true;
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.label6.Location = new System.Drawing.Point(11, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(156, 21);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "v3.1 (May 30, 2020)";
+            // 
+            // label7
+            // 
+            this.label7.AutoEllipsis = true;
+            this.label7.AutoSize = true;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.25F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(236)))));
+            this.label7.Location = new System.Drawing.Point(23, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(246, 114);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "• Fixed bugs\r\n• (New) 3 new website sources to read.\r\n  - Royal Road\r\n  - Novel F" +
+    "ull\r\n  - Novel Crush\r\n• (New) Application Info";
+            // 
             // ChangeLogsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +354,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -335,5 +379,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
