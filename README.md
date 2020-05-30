@@ -5,7 +5,7 @@
 <h1 align="center">Light/Web Novel Reader Desktop Application</h1>
 
 ## Novel Reader
-A Light Novel or Web Novel Reader for Windows/Desktop, this app use webscrapping for getting data to website showing it to the app. Download the pre-release version
+A Light Novel or Web Novel Reader for Windows/Desktop, this app use webscrapping for getting data to website showing it to the app. Download the latest version.
 
 <img alt="Download Light.Web NovelReader" src="https://img.shields.io/sourceforge/dt/light-web-novelreader.svg" ></a>
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Keumjoh/NovelReader?label=Project%20Size">
@@ -15,8 +15,10 @@ A Light Novel or Web Novel Reader for Windows/Desktop, this app use webscrapping
 Website Source
  - [BoxNovel](https://boxnovel.com/)
  - [Wuxiaworldsite](https://Wuxiaworld.site/)
- - Adding more source on the feature.
-
+ - [RoyalRoad](https://www.royalroad.com/)
+ - [NovelCrush](https://novelcrush.com/)
+ - [NoveFull](https://novelfull.com/)
+ 
 ## Interface
 <p align="center">
   <img src="Screenshots/UI.PNG" title="NovelReader" alt="NovelReader">
@@ -29,9 +31,7 @@ Website Source
 </p>
 
 ## Features
-I'm still working on needed features such as favorite, recent/history, download etc
-
- - Search with ordery by filter
+ - Search
  - Displaying novel information
  - Changing font size and font
  - Text alignment
